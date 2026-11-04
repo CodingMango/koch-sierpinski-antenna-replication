@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# HFSS results and temporary files (large, regenerable)
+*.aedtresults/
+*.aedt.lock
+*.lock
+*.aedt.auto
+
+# Windows / editor
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Private working files: never publish
+HANDOFF_*.md
+letter_*.txt
+Export_*
+.env
