@@ -1,0 +1,6 @@
+numpy>=2.3
+scipy>=1.16
+pandas>=2.3
+matplotlib>=3.10
+shapely>=2.1
+ezdxf>=1.4
