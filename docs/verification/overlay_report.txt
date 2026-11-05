@@ -1,0 +1,78 @@
+
+=== Fig 4 ===
+  [PASS] plot frame found (2 vertical + 2 horizontal lines)  v=[285.5, 2065.5], h=[50.5, 1179.5]
+  [PASS] 5 x-ticks and 7 y-ticks found  5 x-ticks, 7 y-ticks
+  [PASS] ticks are evenly spaced (residual <= 1 px)  x 0.30 px, y 0.29 px
+  [PASS] INFO axis span read from the ticks  x 0.50 to 10.00; y -0.0 (top) to -30.0 (bottom); 1 px = 0.0053 x-units = 0.027 y-units
+  [PASS] frame matches the digitizing calibration (<= 1 px)  max difference 0.00 px
+  [PASS] tick calibration = frame calibration (<= 1.5 px)  max difference 0.92 px
+  [PASS] Iter0: digitized points on the curve (<= 5 px)  100.0% of 543 points (100.0% within 3 px; farthest 1.0 px)
+  [PASS] Iter0: no curve piece missed (<= 12 px)  100.00% of 4810 curve pixels; farthest 8 px = 0.21 y-units; stroke is 7 px thick
+  [PASS] Iter0: INFO digitized value vs centre of the drawn line  -0.08 y-units (stroke = 0.19 y-units thick)
+  [PASS] Iter1: digitized points on the curve (<= 5 px)  100.0% of 1079 points (100.0% within 3 px; farthest 1.0 px)
+  [PASS] Iter1: no curve piece missed (<= 12 px)  100.00% of 16489 curve pixels; farthest 9 px = 0.24 y-units; stroke is 8 px thick
+  [PASS] Iter1: INFO digitized value vs centre of the drawn line  -0.09 y-units (stroke = 0.21 y-units thick)
+  [PASS] Iter2: digitized points on the curve (<= 5 px)  100.0% of 1114 points (100.0% within 3 px; farthest 1.0 px)
+  [PASS] Iter2: no curve piece missed (<= 12 px)  100.00% of 29032 curve pixels; farthest 9 px = 0.24 y-units; stroke is 8 px thick
+  [PASS] Iter2: INFO digitized value vs centre of the drawn line  -0.09 y-units (stroke = 0.21 y-units thick)
+  [PASS] Iter3: digitized points on the curve (<= 5 px)  100.0% of 1772 points (100.0% within 3 px; farthest 1.0 px)
+  [PASS] Iter3: no curve piece missed (<= 14 px)  100.00% of 64943 curve pixels; farthest 11 px = 0.30 y-units; stroke is 9 px thick
+  [PASS] Iter3: INFO digitized value vs centre of the drawn line  -0.11 y-units (stroke = 0.24 y-units thick)
+
+=== Fig 5 (simulated S11, red) ===
+  [PASS] plot frame found (2 vertical + 2 horizontal lines)  v=[288.5, 2048.5], h=[52.5, 1183.5]
+  [PASS] 5 x-ticks and 7 y-ticks found  5 x-ticks, 7 y-ticks
+  [PASS] ticks are evenly spaced (residual <= 1 px)  x 0.40 px, y 0.64 px
+  [PASS] INFO axis span read from the ticks  x 0.50 to 10.00; y 0.0 (top) to -30.0 (bottom); 1 px = 0.0054 x-units = 0.027 y-units
+  [PASS] simulated: digitized points on the curve (<= 5 px)  100.0% of 949 points (98.1% within 3 px; farthest 4.5 px)
+  [PASS] simulated: no curve piece missed (<= 12 px)  99.96% of 60275 curve pixels; farthest 14 px = 0.38 y-units; stroke is 8 px thick
+  [PASS] INFO measured (blue) curve is not digitized  not tested
+
+=== Fig 11 (gain) ===
+  [PASS] plot frame found (2 vertical + 2 horizontal lines)  v=[301.5, 2212.5], h=[42.5, 1280.5]
+  [PASS] 5 x-ticks and 5 y-ticks found  5 x-ticks, 5 y-ticks
+  [PASS] ticks are evenly spaced (residual <= 1 px)  x 0.60 px, y 0.40 px
+  [PASS] INFO axis span read from the ticks  x 0.50 to 10.00; y 25.0 (top) to -25.0 (bottom); 1 px = 0.0050 x-units = 0.040 y-units
+  [PASS] gain: digitized points on the curve (<= 5 px)  100.0% of 939 points (100.0% within 3 px; farthest 0.0 px)
+  [PASS] gain: no curve piece missed (<= 27 px)  100.00% of 54316 curve pixels; farthest 25 px = 0.99 y-units; stroke is 18 px thick
+  [PASS] gain: INFO digitized value vs centre of the drawn line  -0.00 y-units (stroke = 0.73 y-units thick)
+  [PASS] gain: INFO digitized max/min vs outer edge of the drawn stroke  digitized max 20.48, top edge 21.16; digitized min -15.53, bottom edge -16.47 (the stroke edge lies beyond the true vertex at sharp tips)
+
+=== Fig 9 ===
+  [PASS] panel a: outer circle found (radius 385-395 px)  centre (503.8, 490.7), radius 390.0
+  [PASS] panel a E: digitized points on the curve (<= 3 px)  100.0% of 72 points
+  [PASS] panel a E: no curve piece missed (<= 20 px)  100.00% within 20 px, 100.0% within 10 px, farthest 7 px of 13723
+  [PASS] panel a H: digitized points on the curve (<= 3 px)  100.0% of 69 points
+  [PASS] panel a H: no curve piece missed (<= 20 px)  100.00% within 20 px, 100.0% within 10 px, farthest 6 px of 8735
+  [PASS] panel b: outer circle found (radius 385-395 px)  centre (1585.9, 487.7), radius 391.2
+  [PASS] panel b E: digitized points on the curve (<= 3 px)  100.0% of 71 points
+  [PASS] panel b E: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.5% within 10 px, farthest 16 px of 15694
+  [PASS] panel b H: digitized points on the curve (<= 3 px)  100.0% of 69 points
+  [PASS] panel b H: no curve piece missed (<= 20 px)  100.00% within 20 px, 100.0% within 10 px, farthest 7 px of 9739
+  [PASS] panel c: outer circle found (radius 385-395 px)  centre (2667.2, 488.5), radius 390.6
+  [PASS] panel c E: digitized points on the curve (<= 3 px)  100.0% of 72 points
+  [PASS] panel c E: no curve piece missed (<= 20 px)  100.00% within 20 px, 100.0% within 10 px, farthest 10 px of 16073
+  [PASS] panel c H: digitized points on the curve (<= 3 px)  100.0% of 70 points
+  [PASS] panel c H: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.3% within 10 px, farthest 17 px of 12701
+  [PASS] panel d: outer circle found (radius 385-395 px)  centre (505.6, 491.1), radius 389.9
+  [PASS] panel d E: digitized points on the curve (<= 3 px)  100.0% of 72 points
+  [PASS] panel d E: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.8% within 10 px, farthest 13 px of 12935
+  [PASS] panel d H: digitized points on the curve (<= 3 px)  100.0% of 67 points
+  [PASS] panel d H: no curve piece missed (<= 20 px)  100.00% within 20 px, 100.0% within 10 px, farthest 7 px of 9689
+  [PASS] panel e: outer circle found (radius 385-395 px)  centre (1588.6, 490.4), radius 390.5
+  [PASS] panel e E: digitized points on the curve (<= 3 px)  100.0% of 72 points
+  [PASS] panel e E: no curve piece missed (<= 20 px)  100.00% within 20 px, 97.3% within 10 px, farthest 17 px of 20973
+  [PASS] panel e H: digitized points on the curve (<= 3 px)  100.0% of 66 points
+  [PASS] panel e H: no curve piece missed (<= 20 px)  99.88% within 20 px, 99.2% within 10 px, farthest 31 px of 11518
+  [PASS] panel f: outer circle found (radius 385-395 px)  centre (2671.3, 491.2), radius 389.8
+  [PASS] panel f E: digitized points on the curve (<= 3 px)  100.0% of 72 points
+  [PASS] panel f E: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.2% within 10 px, farthest 15 px of 17145
+  [PASS] panel f H: digitized points on the curve (<= 3 px)  100.0% of 68 points
+  [PASS] panel f H: no curve piece missed (<= 20 px)  99.99% within 20 px, 95.8% within 10 px, farthest 20 px of 11272
+  [PASS] panel g: outer circle found (radius 385-395 px)  centre (1587.8, 1565.0), radius 389.9
+  [PASS] panel g E: digitized points on the curve (<= 3 px)  100.0% of 71 points
+  [PASS] panel g E: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.1% within 10 px, farthest 16 px of 19088
+  [PASS] panel g H: digitized points on the curve (<= 3 px)  100.0% of 68 points
+  [PASS] panel g H: no curve piece missed (<= 20 px)  100.00% within 20 px, 99.7% within 10 px, farthest 16 px of 8996
+
+68 passed, 0 failed, 68 checks
