@@ -1,0 +1,6 @@
+design,x_start_mm,x_end_mm,y_centre_mm,width_mm,note
+Iter0,9.500,30.000,0.000,1.800,starts 2 mm before Sl/2-Fl: the slanted triangle edge meets the feed at x = 10.5-11.5 mm
+Iter1,9.500,30.000,0.000,1.800,starts 2 mm before Sl/2-Fl: the slanted triangle edge meets the feed at x = 10.5-11.5 mm
+Iter2,10.900,30.000,0.000,1.800,starts 0.6 mm before Sl/2-Fl; overlaps the patch by about 0.1 mm at the notch apex
+Iter3,10.900,30.000,0.000,1.800,starts 0.6 mm before Sl/2-Fl; overlaps the patch by about 0.1 mm at the notch apex
+KochOnly,10.900,30.000,0.000,1.800,starts 0.6 mm before Sl/2-Fl; overlaps the patch by about 0.1 mm at the notch apex
