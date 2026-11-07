@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Run the data check and analysis scripts 01-07 in order and keep one log.
+"""Run the data check, analysis scripts 01-07 and the results check (00d) in order; keep one log.
 
 Usage (repo root, venv active):   python scripts\\run_all.py            (data in <repo>\\data)
                                   python scripts\\run_all.py --data-dir C:\\path\\to\\csv_folder
 Writes results/run_all_log.txt. Exit code 0 only if every script finished without error.
-00_verify_data.py is run first when present (use --skip-verify to leave it out).
+00_verify_data.py is run first and 00d_verify_results.py last, when present (use --skip-verify to leave it out).
 """
 import argparse
 import subprocess
@@ -31,6 +31,8 @@ def main():
     if not a.skip_verify and (HERE / "00_verify_data.py").exists():
         jobs.append(("00_verify_data.py", ["--data-dir", a.data_dir]))
     jobs += [(s, ["--data-dir", a.data_dir, "--figures", a.figures, "--results", a.results]) for s in SCRIPTS]
+    if (HERE / "00d_verify_results.py").exists():
+        jobs.append(("00d_verify_results.py", ["--data-dir", a.data_dir, "--results", a.results]))
     log, failed = [], []
     for name, extra in jobs:
         r = subprocess.run([sys.executable, str(HERE / name)] + extra, capture_output=True, text=True,

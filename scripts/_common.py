@@ -46,6 +46,14 @@ PAPER = {
 PANELS = ["a", "b", "c", "d", "e", "f", "g"]                  # Fig 9 panels = the 7 resonances
 
 
+def rel(p):
+    """Path relative to the repo root when possible (keeps logs free of machine-specific folders)."""
+    try:
+        return Path(p).resolve().relative_to(ROOT)
+    except ValueError:
+        return Path(p).name
+
+
 def make_parser(doc):
     ap = argparse.ArgumentParser(description=doc, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data-dir", default=str(ROOT / "data"),
@@ -77,7 +85,7 @@ def load(data_dir, key):
     p = locate(data_dir, key)
     df = pd.read_csv(p)
     df.columns = [c.strip() for c in df.columns]
-    print(f"LOAD  {key}: {p}  ({len(df)} rows)")
+    print(f"LOAD  {key}: {rel(p)}  ({len(df)} rows)")
     return df
 
 
@@ -159,11 +167,11 @@ def show(df, **kw):
 def save_table(df, results_dir, name):
     p = Path(results_dir) / name
     df.to_csv(p, index=False)
-    print(f"WROTE {p}")
+    print(f"WROTE {rel(p)}")
 
 
 def save_fig(fig, figures_dir, name, **kw):
     p = Path(figures_dir) / name
     fig.savefig(p, dpi=kw.pop("dpi", 200), **kw)
     plt.close(fig)
-    print(f"WROTE {p}")
+    print(f"WROTE {rel(p)}")
