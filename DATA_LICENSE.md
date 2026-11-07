@@ -4,4 +4,6 @@ Unless stated otherwise, the simulation exports, derived tables and figures in t
 
 Files in `data/paper_digitized/` are digitized from figures in Azzouz et al., Fractal Fract. 2026, 10, 47 (doi:10.3390/fractalfract10010047), published under CC BY 4.0. They are derivative data; please credit the original authors as well.
 
+Images in `docs/verification/` contain figures from the same article (CC BY 4.0) with our overlays added. They are derivative material: please credit the original authors as well. See `docs/verification/README.md`.
+
 Code is under the MIT licence (see `LICENSE`).
