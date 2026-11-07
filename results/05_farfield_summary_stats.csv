@@ -1,0 +1,13 @@
+quantity,value,note
+max_peak_gain_dBi,4.45,at 7.4 GHz
+max_peak_directivity_dBi,9.28,at 7.5 GHz
+max_broadside_gain_g0_dBi,2.67,at 7.5 GHz (g0 inferred = broadside)
+radiation_efficiency_min_pct,1.5,at 3.1 GHz
+radiation_efficiency_max_pct,34.8,at 7.4 GHz
+radiation_efficiency_mean_pct,14.4,mean of 91 grid points
+rows_with_peak_directivity_below_0dBi,17,"runs (GHz): 1.0-1.4, 3.3-4.4 - physically impossible, UNRESOLVED"
+max_|G - (D + 10log10 eff)|_dB,0.00018,internal consistency
+corr_peakG_vs_paper_Fig11,0.22,"91 points; Fig 11 ends at 9.95 GHz, its last value is held for the 10.0 GHz point"
+corr_broadsideG_vs_paper_Fig11,-0.03,same points
+mean_paperFig11_minus_ours_peakG_dB,11.0,same points
+RMSE_paperFig11_vs_ours_peakG_dB,13.6,same points

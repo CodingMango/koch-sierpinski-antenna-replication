@@ -1,0 +1,8 @@
+band,paper_f_GHz,paper_VSWR_text,ours_VSWR_at_paper_f,diff,agrees_within_0.1,ours_dip_f_GHz,ours_VSWR_at_own_dip,paper_claim_le_1.8_met_at_paper_f
+1,2.11,1.45,3.2,1.75,False,2.09,3.08,False
+2,3.06,1.65,1.67,0.02,True,3.04,1.17,True
+3,5.78,1.37,1.71,0.34,False,5.76,1.55,True
+4,6.94,1.8,1.57,-0.23,False,6.92,1.54,True
+5,8.48,1.06,1.61,0.55,False,8.45,1.38,True
+6,9.23,1.37,1.34,-0.03,True,9.18,1.08,True
+7,9.56,1.31,1.14,-0.17,False,9.54,1.03,True

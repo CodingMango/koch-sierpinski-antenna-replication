@@ -1,0 +1,450 @@
+
+==============================================================================
+00_verify_data.py  ->  OK
+==============================================================================
+
+=== A files ===
+  [PASS] paper_s11: row count                                             949 rows, expected 949
+  [PASS] paper_s11: NaN count                                             0 NaN, expected 0
+  [PASS] paper_fig4: row count                                            4508 rows, expected 4508
+  [PASS] paper_fig4: NaN count                                            0 NaN, expected 0
+  [PASS] paper_fig11: row count                                           939 rows, expected 939
+  [PASS] paper_fig11: NaN count                                           0 NaN, expected 0
+  [PASS] paper_fig9: row count                                            1008 rows, expected 1008
+  [PASS] paper_fig9: NaN count                                            29 NaN, expected 29
+  [PASS] s11_final: row count                                             1101 rows, expected 1101
+  [PASS] s11_final: NaN count                                             0 NaN, expected 0
+  [PASS] s11_iters: row count                                             5505 rows, expected 5505
+  [PASS] s11_iters: NaN count                                             0 NaN, expected 0
+  [PASS] s11_fw: row count                                                3303 rows, expected 3303
+  [PASS] s11_fw: NaN count                                                0 NaN, expected 0
+  [PASS] s11_pad20: row count                                             1101 rows, expected 1101
+  [PASS] s11_pad20: NaN count                                             0 NaN, expected 0
+  [PASS] far_sweep: row count                                             91 rows, expected 91
+  [PASS] far_sweep: NaN count                                             0 NaN, expected 0
+  [PASS] gain_adapt: row count                                            2172 rows, expected 2172
+  [PASS] gain_adapt: NaN count                                            0 NaN, expected 0
+  [PASS] gain_disc: row count                                             5792 rows, expected 5792
+  [PASS] gain_disc: NaN count                                             0 NaN, expected 0
+  [PASS] fig9_levels: row count                                           7 rows, expected 7
+  [PASS] fig9_levels: NaN count                                           0 NaN, expected 0
+  [PASS] paper_s11: frequency strictly increasing                         
+  [PASS] paper_fig11: frequency strictly increasing                       
+  [PASS] s11_final: frequency strictly increasing                         
+
+=== B S11/VSWR ===
+  [PASS] VSWR column = (1+|G|)/(1-|G|)                                    max diff 2.0e-12
+  [PASS] our S11 at 2.09 GHz                                              got -5.850, expected -5.800 +/- 0.15 dB
+  [PASS] our S11 at 3.04 GHz                                              got -22.216, expected -22.200 +/- 0.15 dB
+  [PASS] our S11 at 5.76 GHz                                              got -13.340, expected -13.300 +/- 0.15 dB
+  [PASS] our S11 at 6.92 GHz                                              got -13.421, expected -13.400 +/- 0.15 dB
+  [PASS] our S11 at 8.45 GHz                                              got -15.987, expected -16.000 +/- 0.15 dB
+  [PASS] our S11 at 9.18 GHz                                              got -28.615, expected -28.600 +/- 0.15 dB
+  [PASS] our S11 at 9.54 GHz                                              got -37.636, expected -37.600 +/- 0.15 dB
+  [PASS] our VSWR at 2.11 GHz                                             got 3.200, expected 3.200 +/- 0.02 
+  [PASS] our VSWR at 3.06 GHz                                             got 1.672, expected 1.670 +/- 0.02 
+  [PASS] our VSWR at 5.78 GHz                                             got 1.708, expected 1.710 +/- 0.02 
+  [PASS] our VSWR at 6.94 GHz                                             got 1.566, expected 1.570 +/- 0.02 
+  [PASS] our VSWR at 8.48 GHz                                             got 1.609, expected 1.610 +/- 0.02 
+  [PASS] our VSWR at 9.23 GHz                                             got 1.341, expected 1.340 +/- 0.02 
+  [PASS] our VSWR at 9.56 GHz                                             got 1.142, expected 1.140 +/- 0.02 
+
+=== C digitized vs paper TEXT ===
+  [PASS] digitized S11 at 2.11 GHz vs text RL                             got -14.760, expected -14.000 +/- 1.1 dB
+  [PASS] digitized S11 at 3.06 GHz vs text RL                             got -12.350, expected -12.000 +/- 1.1 dB
+  [PASS] digitized S11 at 5.78 GHz vs text RL                             got -16.250, expected -16.000 +/- 1.1 dB
+  [PASS] digitized S11 at 6.94 GHz vs text RL                             got -10.970, expected -10.000 +/- 1.1 dB
+  [PASS] digitized S11 at 8.48 GHz vs text RL                             got -29.920, expected -30.000 +/- 1.1 dB
+  [PASS] digitized S11 at 9.23 GHz vs text RL                             got -16.250, expected -16.000 +/- 1.1 dB
+  [PASS] digitized S11 at 9.56 GHz vs text RL                             got -17.330, expected -17.000 +/- 1.1 dB
+
+=== C two digitizations agree ===
+  [PASS] paper_s11 vs Fig4-Iter3 at 2.11 GHz                              got -14.760, expected -14.681 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 3.06 GHz                              got -12.350, expected -12.290 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 5.78 GHz                              got -16.250, expected -16.196 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 6.94 GHz                              got -10.970, expected -10.934 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 8.48 GHz                              got -29.920, expected -29.934 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 9.23 GHz                              got -16.250, expected -16.222 +/- 0.35 dB
+  [PASS] paper_s11 vs Fig4-Iter3 at 9.56 GHz                              got -17.330, expected -17.287 +/- 0.35 dB
+
+=== C Fig 4 digitized ===
+  [PASS] Iter0: number of dips <= -10 dB                                  2 vs 2
+  [PASS] Iter0: dip 5.54 GHz / -11.9 dB                                   
+  [PASS] Iter0: dip 7.44 GHz / -12.5 dB                                   
+  [PASS] Iter1: number of dips <= -10 dB                                  3 vs 3
+  [PASS] Iter1: dip 5.37 GHz / -13.0 dB                                   
+  [PASS] Iter1: dip 7.4 GHz / -13.6 dB                                    
+  [PASS] Iter1: dip 8.36 GHz / -15.0 dB                                   
+  [PASS] Iter2: number of dips <= -10 dB                                  5 vs 5
+  [PASS] Iter2: dip 3.78 GHz / -22.8 dB                                   
+  [PASS] Iter2: dip 7.5 GHz / -14.1 dB                                    
+  [PASS] Iter2: dip 8.17 GHz / -13.1 dB                                   
+  [PASS] Iter2: dip 8.7 GHz / -15.6 dB                                    
+  [PASS] Iter2: dip 9.73 GHz / -11.9 dB                                   
+  [PASS] Iter3: number of dips <= -10 dB                                  7 vs 7
+  [PASS] Iter3: dip 2.11 GHz / -14.7 dB                                   
+  [PASS] Iter3: dip 3.06 GHz / -12.3 dB                                   
+  [PASS] Iter3: dip 5.78 GHz / -16.2 dB                                   
+  [PASS] Iter3: dip 6.94 GHz / -10.9 dB                                   
+  [PASS] Iter3: dip 8.48 GHz / -29.9 dB                                   
+  [PASS] Iter3: dip 9.23 GHz / -16.2 dB                                   
+  [PASS] Iter3: dip 9.56 GHz / -17.3 dB                                   
+  [PASS] Iter0 curve starts at ~2.07 GHz (not 0.5)                        dotted curve has gaps at the left
+
+=== C Fig 11 digitized ===
+  [PASS] gain at 2.11 GHz                                                 got -2.470, expected -2.500 +/- 0.1 dBi
+  [PASS] gain at 3.06 GHz                                                 got 6.460, expected 6.500 +/- 0.1 dBi
+  [PASS] gain at 5.78 GHz                                                 got -6.750, expected -6.700 +/- 0.1 dBi
+  [PASS] gain at 6.94 GHz                                                 got 2.210, expected 2.200 +/- 0.1 dBi
+  [PASS] gain at 8.48 GHz                                                 got 13.710, expected 13.700 +/- 0.1 dBi
+  [PASS] gain at 9.23 GHz                                                 got 10.570, expected 10.600 +/- 0.1 dBi
+  [PASS] gain at 9.56 GHz                                                 got 4.950, expected 5.000 +/- 0.1 dBi
+  [PASS] max value (near 7.80 GHz)                                        got 20.480, expected 20.500 +/- 0.1 dBi
+  [PASS] frequency of max                                                 got 7.800, expected 7.800 +/- 0.02 GHz
+  [PASS] value near 4.10 GHz                                              got 16.810, expected 16.800 +/- 0.1 dBi
+  [PASS] minimum value (NOTE: old handoff said -16.5)                     got -15.530, expected -15.500 +/- 0.1 dBi
+
+=== D far field ===
+  [PASS] peak IEEE gain max                                               got 4.453, expected 4.450 +/- 0.01 dBi
+  [PASS]   ... at frequency                                               got 7.400, expected 7.400 +/- 0.01 GHz
+  [PASS] peak directivity max                                             got 9.280, expected 9.280 +/- 0.01 dBi
+  [PASS]   ... at frequency                                               got 7.500, expected 7.500 +/- 0.01 GHz
+  [PASS] radiation efficiency min (%)                                     got 1.540, expected 1.500 +/- 0.05 
+  [PASS] radiation efficiency max (%)                                     got 34.826, expected 34.800 +/- 0.05 
+  [PASS] radiation efficiency mean (%)                                    got 14.416, expected 14.400 +/- 0.1 
+  [PASS] points with peak directivity < 0 dBi                             got 17.000, expected 17.000 +/- 0 
+  [PASS] G = D x efficiency (dB)                                          max diff 0.0002 dB
+  [PASS] efficiency = Prad/Pacc                                           max diff 5.0e-07
+  [PASS] g0 column max (= broadside gain, inferred)                       got 2.667, expected 2.670 +/- 0.01 dBi
+  [PASS] corr(Fig 11, our peak gain)                                      got 0.231, expected 0.220 +/- 0.04 
+  [PASS] corr(Fig 11, our broadside g0)                                   got -0.025, expected -0.030 +/- 0.04 
+  [PASS] mean offset Fig 11 - ours (dB)                                   got 11.093, expected 11.000 +/- 0.5 
+  [PASS] RMSE Fig 11 vs ours (dB)                                         got 13.692, expected 13.600 +/- 0.3 
+  [PASS] gain_adapt: phi cuts are 0/90/180/270, theta 0..180              
+  [PASS] gain_disc: phi cuts are 0/90/180/270, theta 0..180               
+  [PASS] max of 4 principal cuts at 2.11 GHz                              got -2.315, expected -2.320 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 3.06 GHz                              got -14.808, expected -14.810 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 5.78 GHz                              got -0.968, expected -0.970 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 6.94 GHz                              got 1.609, expected 1.610 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 8.48 GHz                              got -2.702, expected -2.700 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 9.23 GHz                              got -6.147, expected -6.150 +/- 0.01 dBi
+  [PASS] max of 4 principal cuts at 9.56 GHz                              got -0.058, expected -0.060 +/- 0.01 dBi
+
+=== E Fig 9 ===
+  [PASS] paper Fig 9 peak vs text gain within 1.4 dB (all 7)              max 1.3 dB
+  [PASS] ours below paper by 6-23.5 dB (all 7)                            range 6.0-23.4 dB
+  [PASS] 7 panels x 2 curves x 72 angles                                  
+
+=== F iterations ===
+  [PASS] 5 designs x 1101 points                                          Fig7_KochOnly, Iter0, Iter1, Iter2, Iter3_hybrid_baseline
+  [PASS] Iter0: number of our dips <= -10 dB (1-10 GHz)                   2 vs 2
+  [PASS] Iter0: dip 5.48 GHz / -11.9 dB                                   
+  [PASS] Iter0: dip 7.38 GHz / -19.7 dB                                   
+  [PASS] Iter1: number of our dips <= -10 dB (1-10 GHz)                   5 vs 5
+  [PASS] Iter1: dip 5.31 GHz / -12.6 dB                                   
+  [PASS] Iter1: dip 7.31 GHz / -17.6 dB                                   
+  [PASS] Iter1: dip 8.24 GHz / -14.4 dB                                   
+  [PASS] Iter1: dip 8.74 GHz / -37.1 dB                                   
+  [PASS] Iter1: dip 9.8 GHz / -12.6 dB                                    
+  [PASS] Iter2: number of our dips <= -10 dB (1-10 GHz)                   5 vs 5
+  [PASS] Iter2: dip 3.81 GHz / -18.8 dB                                   
+  [PASS] Iter2: dip 7.5 GHz / -19.8 dB                                    
+  [PASS] Iter2: dip 8.03 GHz / -15.9 dB                                   
+  [PASS] Iter2: dip 8.67 GHz / -19.3 dB                                   
+  [PASS] Iter2: dip 9.64 GHz / -20.3 dB                                   
+  [PASS] Iter3 in this file = baseline S11 file (rounded to 3 decimals)   max diff 0.0005 dB
+
+133 passed, 0 failed, 133 checks
+
+==============================================================================
+01_s11_final_vs_paper.py  ->  OK
+==============================================================================
+LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
+LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
+
+Resonances: paper text vs our HFSS model (positive depth_gap = ours shallower than the paper's text value)
+ band  paper_f_GHz  paper_RL_text_dB  paper_BW_text_MHz  paper_digitized_S11_at_f_dB  ours_S11_at_paper_f_dB  ours_dip_f_GHz  df_MHz  df_pct  ours_dip_dB  ours_BW_MHz  band_lo  band_hi  depth_gap_dB
+    1         2.11               -14                 90                        -14.8                    -5.6            2.09     -20   -0.95         -5.8            0      NaN      NaN           8.2
+    2         3.06               -12                 37                        -12.3                   -12.0            3.04     -20   -0.65        -22.2           41    3.024    3.065         -10.2
+    3         5.78               -16                 67                        -16.2                   -11.6            5.76     -20   -0.35        -13.3           56    5.734    5.790           2.7
+    4         6.94               -10                100                        -11.0                   -13.1            6.92     -20   -0.29        -13.4          183    6.825    7.008          -3.4
+    5         8.48               -30                 90                        -29.9                   -12.6            8.45     -30   -0.35        -16.0          104    8.397    8.501          14.0
+    6         9.23               -16                130                        -16.2                   -16.7            9.18     -50   -0.54        -28.6          575    9.087    9.662         -12.6
+    7         9.56               -17                220                        -17.3                   -23.6            9.54     -20   -0.21        -37.6          575    9.087    9.662         -20.6
+WROTE results\01_s11_resonances.csv
+
+Frequency criterion |df|/f <= 1.0 %: 7 of 7 bands (largest 0.95 %)
+Bands whose dip is shallower than -10 dB in our model: [1]
+Bands that share one contiguous -10 dB band in our model: [(6, 7)]
+RMSE vs paper's digitized S11 (1.5-10 GHz, clipped -30 dB, 850 points): 2.92 dB, correlation 0.81
+WROTE figures\01_s11_final_vs_paper.png
+
+==============================================================================
+02_fig4_iterations.py  ->  OK
+==============================================================================
+LOAD  sim_iters: data\simulation\sim_s11_iter0-3_and_koch_only.csv  (5505 rows)
+LOAD  paper_fig4: data\paper_digitized\paper_fig4_s11_iter0-3_digitized.csv  (4508 rows)
+  designs in our file: ['Fig7_KochOnly', 'Iter0', 'Iter1', 'Iter2', 'Iter3_hybrid_baseline']
+  curves in paper file: ['Iter0', 'Iter1', 'Iter2', 'Iter3']
+
+Iter0: dips <= -10 dB in 1-10 GHz (GHz / dB)
+  paper: 5.54/-11.9, 7.44/-12.5
+  ours : 5.48/-11.9, 7.38/-19.7
+
+Iter1: dips <= -10 dB in 1-10 GHz (GHz / dB)
+  paper: 5.37/-13.0, 7.40/-13.6, 8.36/-15.0
+  ours : 5.31/-12.6, 7.31/-17.6, 8.24/-14.4, 8.74/-37.1, 9.80/-12.6
+
+Iter2: dips <= -10 dB in 1-10 GHz (GHz / dB)
+  paper: 3.78/-22.8, 7.50/-14.1, 8.17/-13.1, 8.69/-15.6, 9.73/-11.9
+  ours : 3.81/-18.8, 7.50/-19.8, 8.03/-15.9, 8.67/-19.3, 9.64/-20.3
+
+Iter3: dips <= -10 dB in 1-10 GHz (GHz / dB)
+  paper: 2.11/-14.7, 3.06/-12.3, 5.78/-16.2, 6.94/-10.9, 8.48/-29.9, 9.23/-16.2, 9.57/-17.3
+  ours : 3.04/-22.2, 5.76/-13.3, 6.92/-13.4, 8.45/-16.0, 9.18/-28.6, 9.54/-37.6
+
+Summary (counts of dips <= -10 dB; the paper's text claims 2, 3, 5, 7 for iterations 0-3)
+iteration  paper_curve_starts_GHz  RMSE_dB  corr  n_grid_points  RMSE_flat_extension_dB  paper_dips_le_-10  ours_dips_le_-10  paper_dips_le_-15  ours_dips_le_-15
+    Iter0                    2.07     1.71  0.83            790                    1.70                  2                 2                  0                 1
+    Iter1                    0.52     2.84  0.78            848                    2.85                  3                 5                  1                 2
+    Iter2                    0.52     2.64  0.83            849                    2.75                  5                 5                  2                 5
+    Iter3                    0.52     2.80  0.82            848                    2.80                  7                 6                  4                 4
+WROTE results\02_fig4_dips.csv
+WROTE results\02_fig4_summary.csv
+WROTE figures\02_fig4_iterations.png
+
+==============================================================================
+03_fig7_koch_only.py  ->  OK
+==============================================================================
+LOAD  sim_iters: data\simulation\sim_s11_iter0-3_and_koch_only.csv  (5505 rows)
+
+Dips >= 1 dB prominence, 1-12 GHz (GHz / dB)
+  Koch-only: 2.17/-6.5, 3.07/-23.9, 5.93/-16.1, 6.95/-12.7, 7.98/-13.1, 9.21/-22.4, 9.99/-45.3, 10.62/-22.2
+  hybrid   : 2.09/-5.8, 3.04/-22.2, 5.76/-13.3, 6.92/-13.4, 7.76/-4.1, 8.45/-16.0, 9.18/-28.6, 9.54/-37.6, 10.60/-40.7, 11.91/-23.8
+
+Paper's Fig 7 claims vs our Koch-only model
+                                                      claim  ours_nearest_dip_GHz  ours_dip_dB  df_pct                                                                                   result
+                             dip near 2.0 GHz, about -10 dB                  2.17         -6.5     8.5                                                          NOT matched (no dip within 3 %)
+                             dip near 2.9 GHz, about -10 dB                  3.07        -23.9     5.9                                                          NOT matched (no dip within 3 %)
+                             dip near 7.2 GHz, below -20 dB                  6.95        -12.7    -3.5                                                          NOT matched (no dip within 3 %)
+5.8-6.2 GHz: band of nearly 1000 MHz, RL better than -25 dB                  5.93        -16.1     NaN                           NOT matched: our -10 dB band there is 75 MHz, deepest -16.1 dB
+                              9.7 GHz: -11 dB, 700 MHz wide                  9.99        -45.3     3.0 NOT matched: our -10 dB band there is 236 MHz wide (claimed 700), dip 3.0 % from 9.7 GHz
+
+Deepest S11 of the Koch-only model below 9.5 GHz: -23.9 dB (paper claims better than -25 dB at 5.8-6.2 GHz)
+Koch-only vs hybrid, both ours: RMSE 4.4 dB, correlation 0.52 (1.5-10 GHz, clipped -30 dB)
+Koch-only dips that have a hybrid dip within 2 %: 4 of 8 [3.07, 6.95, 9.21, 10.62]
+Koch-only dips that have a hybrid dip within 4 %: 7 of 8 [2.17, 3.07, 5.93, 6.95, 7.98, 9.21, 10.62]
+WROTE results\03_fig7_claims.csv
+WROTE results\03_fig7_dips.csv
+WROTE figures\03_fig7_koch_only.png
+
+==============================================================================
+04_fig8_vswr.py  ->  OK
+==============================================================================
+LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
+LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
+Max |VSWR from S11 - HFSS VSWR column| = 1.99e-12 (relative 1.15e-14)
+ band  paper_f_GHz  paper_VSWR_text  ours_VSWR_at_paper_f  diff  agrees_within_0.1  ours_dip_f_GHz  ours_VSWR_at_own_dip  paper_claim_le_1.8_met_at_paper_f
+    1         2.11             1.45                  3.20  1.75              False            2.09                  3.08                              False
+    2         3.06             1.65                  1.67  0.02               True            3.04                  1.17                               True
+    3         5.78             1.37                  1.71  0.34              False            5.76                  1.55                               True
+    4         6.94             1.80                  1.57 -0.23              False            6.92                  1.54                               True
+    5         8.48             1.06                  1.61  0.55              False            8.45                  1.38                               True
+    6         9.23             1.37                  1.34 -0.03               True            9.18                  1.08                               True
+    7         9.56             1.31                  1.14 -0.17              False            9.54                  1.03                               True
+WROTE results\04_vswr_at_paper_frequencies.csv
+
+Agreement within 0.1: bands [2, 6] of 7.
+Bands where our VSWR exceeds the paper's stated maximum of 1.8 at the paper's frequency: [1]
+WROTE figures\04_fig8_vswr.png
+
+==============================================================================
+05_gain_and_efficiency.py  ->  OK
+==============================================================================
+LOAD  sim_far: data\simulation\sim_farfield_summary_1-10GHz.csv  (91 rows)
+LOAD  cuts_adapt: data\simulation\sim_gain_cuts_adaptive_freqs.csv  (2172 rows)
+LOAD  cuts_disc: data\simulation\sim_gain_cuts_discrete_freqs.csv  (5792 rows)
+LOAD  paper_fig11: data\paper_digitized\paper_fig11_gain_vs_freq_digitized.csv  (939 rows)
+LOAD  fig9_levels: data\derived\fig9_peak_levels_paper_vs_sim.csv  (7 rows)
+  frequencies in the cut files: [2.11, 3.04, 3.06, 5.78, 6.92, 6.94, 8.45, 8.48, 9.18, 9.23, 9.56]
+
+Gain at the paper's seven resonances (dBi)
+ band  paper_f_GHz  paper_text_gain_dBi  paper_fig11_dBi  paper_fig9_cut_max_dBi  ours_cut_max_at_paper_f_dBi ours_peak_phi_theta  paired_f_GHz  ours_cut_max_at_paired_f_dBi  grid_f_GHz  grid_peak_gain_dBi  grid_peak_directivity_dBi  grid_rad_efficiency_pct  aperture_heuristic_dBi  text_minus_ours_cut_max_dB
+    1         2.11                 3.92             -2.5                     3.7                        -2.32                 0/6          2.11                         -2.32         2.1               -2.30                       4.84                     19.3                     1.7                         6.2
+    2         3.06                 8.24              6.5                     8.6                       -14.81              180/50          3.04                        -14.68         3.1              -15.22                       2.90                      1.5                     5.0                        23.0
+    3         5.78                 6.90             -6.8                     5.6                        -0.97               180/1          5.78                         -0.97         5.8               -1.33                       8.82                      9.7                    10.5                         7.9
+    4         6.94                11.66              2.2                    11.0                         1.61              180/40          6.92                          1.61         6.9                1.56                       6.62                     31.2                    12.1                        10.0
+    5         8.48                19.38             13.7                    19.3                        -2.70              180/33          8.45                         -2.75         8.5               -2.69                       7.81                      8.9                    13.8                        22.1
+    6         9.23                16.76             10.6                    16.7                        -6.15              180/79          9.18                         -5.23         9.2               -3.79                       5.88                     10.8                    14.6                        22.9
+    7         9.56                12.06              5.0                    12.0                        -0.06              180/63          9.56                         -0.06         9.6                0.52                       6.51                     25.2                    14.9                        12.1
+WROTE results\05_gain_at_paper_frequencies.csv
+
+1-10 GHz sweep statistics (our model)
+                             quantity   value                                                                              note
+                    max_peak_gain_dBi    4.45                                                                        at 7.4 GHz
+             max_peak_directivity_dBi    9.28                                                                        at 7.5 GHz
+            max_broadside_gain_g0_dBi    2.67                                              at 7.5 GHz (g0 inferred = broadside)
+         radiation_efficiency_min_pct     1.5                                                                        at 3.1 GHz
+         radiation_efficiency_max_pct    34.8                                                                        at 7.4 GHz
+        radiation_efficiency_mean_pct    14.4                                                            mean of 91 grid points
+rows_with_peak_directivity_below_0dBi      17                  runs (GHz): 1.0-1.4, 3.3-4.4 - physically impossible, UNRESOLVED
+       max_|G - (D + 10log10 eff)|_dB 0.00018                                                              internal consistency
+            corr_peakG_vs_paper_Fig11    0.22 91 points; Fig 11 ends at 9.95 GHz, its last value is held for the 10.0 GHz point
+       corr_broadsideG_vs_paper_Fig11   -0.03                                                                       same points
+  mean_paperFig11_minus_ours_peakG_dB    11.0                                                                       same points
+     RMSE_paperFig11_vs_ours_peakG_dB    13.6                                                                       same points
+WROTE results\05_farfield_summary_stats.csv
+
+At the 7 resonances the paper's text gain exceeds our peak gain by 6.2 to 23.0 dB (cut max). Our peak directivity never exceeds 9.3 dBi in 1-10 GHz.
+WROTE figures\05_gain_and_efficiency.png
+
+==============================================================================
+06_fig9_patterns.py  ->  OK
+==============================================================================
+LOAD  paper_fig9: data\paper_digitized\paper_fig9_patterns_raw_pixels.csv  (1008 rows)
+LOAD  cuts_adapt: data\simulation\sim_gain_cuts_adaptive_freqs.csv  (2172 rows)
+LOAD  cuts_disc: data\simulation\sim_gain_cuts_discrete_freqs.csv  (5792 rows)
+LOAD  fig9_levels: data\derived\fig9_peak_levels_paper_vs_sim.csv  (7 rows)
+LOAD  fig9_scan: data\derived\fig9_convention_scan.csv  (352 rows)
+
+Part A - peak levels (dBi): paper Fig 9 vs paper text vs ours (max of 4 phi cuts, a lower bound)
+panel  f_GHz  paper_Fig9_E_peak  paper_Fig9_H_peak  paper_text_gain  paper_cutmax  ours_max_4cuts  diff_Fig9_vs_text  diff_ours_vs_Fig9
+    a   2.11                3.7               -0.9             3.92           3.7           -2.32               -0.2               -6.0
+    b   3.06                8.6                8.2             8.24           8.6          -14.81                0.4              -23.4
+    c   5.78                4.9                5.6             6.90           5.6           -0.97               -1.3               -6.6
+    d   6.94               11.0                9.0            11.66          11.0            1.61               -0.7               -9.4
+    e   8.48               19.3               13.3            19.38          19.3           -2.70               -0.1              -22.0
+    f   9.23               16.7                6.5            16.76          16.7           -6.15               -0.1              -22.8
+    g   9.56               12.0                3.4            12.06          12.0           -0.06               -0.1              -12.1
+Fig 9 cut maximum vs text gain: largest |difference| 1.3 dB (calibration uncertainty ~ +-1 dB)
+Ours below the Fig 9 cut maximum by 6.0 to 23.4 dB
+WROTE results\06_fig9_levels.csv
+
+Part B1 - recomputed all 352 stored correlations; largest difference to fig9_convention_scan.csv: 1.1e-16 -> REPRODUCED
+
+Part B2 - null test, all 16 conventions: matched correlation vs the 6 mismatched-frequency cuts (14 curves)
+panel curve  f_GHz  matched_best_pearson matched_convention  null_max  null_median  rank_among_7
+    a     E   2.11                 0.547    YZ s=-1 off=180     0.729        0.589             5
+    a     H   2.11                 0.878    XZ s=-1 off=180     0.792        0.748             1
+    b     E   3.06                 0.387     XZ s=+1 off=90     0.542        0.504             6
+    b     H   3.06                 0.432     XZ s=-1 off=90     0.938        0.851             7
+    c     E   5.78                 0.222    XZ s=-1 off=270     0.522        0.409             7
+    c     H   5.78                 0.586      YZ s=-1 off=0     0.740        0.599             5
+    d     E   6.94                 0.360    XZ s=+1 off=270     0.416        0.359             4
+    d     H   6.94                 0.569      XZ s=-1 off=0     0.473        0.326             1
+    e     E   8.48                 0.567    YZ s=+1 off=180     0.639        0.515             3
+    e     H   8.48                 0.559    XZ s=-1 off=270     0.716        0.631             6
+    f     E   9.23                 0.676    YZ s=+1 off=180     0.795        0.723             4
+    f     H   9.23                 0.609      XZ s=-1 off=0     0.629        0.562             2
+    g     E   9.56                 0.810    YZ s=-1 off=180     0.853        0.703             2
+    g     H   9.56                 0.490    XZ s=-1 off=180     0.601        0.371             2
+Matched best is the highest of 7 in 2 of 14 curves (chance expectation 14/7 = 2.0; P(X >= 2 | pure chance) = 0.61); matched below the null median in 7 of 14; below the null maximum in 12 of 14.
+
+Part B2 - null test, z-consistent (offset 90/270): matched correlation vs the 6 mismatched-frequency cuts (14 curves)
+panel curve  f_GHz  matched_best_pearson matched_convention  null_max  null_median  rank_among_7
+    a     E   2.11                 0.293     YZ s=+1 off=90     0.593        0.502             6
+    a     H   2.11                 0.427     XZ s=+1 off=90     0.489        0.402             4
+    b     E   3.06                 0.387     XZ s=+1 off=90     0.542        0.504             6
+    b     H   3.06                 0.432     XZ s=-1 off=90     0.938        0.851             7
+    c     E   5.78                 0.222    XZ s=-1 off=270     0.424        0.307             6
+    c     H   5.78                -0.037    XZ s=-1 off=270     0.629        0.353             7
+    d     E   6.94                 0.360    XZ s=+1 off=270     0.416        0.272             3
+    d     H   6.94                 0.139    XZ s=+1 off=270     0.147        0.121             2
+    e     E   8.48                 0.204     XZ s=+1 off=90     0.639        0.349             5
+    e     H   8.48                 0.559    XZ s=-1 off=270     0.716        0.631             6
+    f     E   9.23                 0.223     YZ s=+1 off=90     0.319        0.274             7
+    f     H   9.23                 0.175    XZ s=-1 off=270     0.360        0.164             4
+    g     E   9.56                 0.016     XZ s=-1 off=90     0.217        0.045             7
+    g     H   9.56                 0.336     YZ s=+1 off=90     0.360        0.098             2
+Matched best is the highest of 7 in 0 of 14 curves (chance expectation 14/7 = 2.0; P(X >= 0 | pure chance) = 1.00); matched below the null median in 9 of 14; below the null maximum in 14 of 14.
+WROTE results\06_fig9_null_test.csv
+
+Reading: no single convention reproduces the paper's pattern shapes, and the matched frequency is not systematically better than mismatched ones, so the shape test cannot support or reject a convention. With a 20 dB level gap (Part A) this is expected, not informative.
+WROTE figures\06_fig9_patterns.png
+
+==============================================================================
+07_make_hero_figure.py  ->  OK
+==============================================================================
+LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
+LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
+LOAD  cuts_adapt: data\simulation\sim_gain_cuts_adaptive_freqs.csv  (2172 rows)
+LOAD  cuts_disc: data\simulation\sim_gain_cuts_discrete_freqs.csv  (5792 rows)
+WROTE figures\07_hero_figure.png
+size 1280 x 640 px (target 1280 x 640)
+
+==============================================================================
+00d_verify_results.py  ->  OK
+==============================================================================
+LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
+LOAD  paper_fig4: data\paper_digitized\paper_fig4_s11_iter0-3_digitized.csv  (4508 rows)
+LOAD  paper_fig11: data\paper_digitized\paper_fig11_gain_vs_freq_digitized.csv  (939 rows)
+LOAD  paper_fig9: data\paper_digitized\paper_fig9_patterns_raw_pixels.csv  (1008 rows)
+LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
+LOAD  sim_iters: data\simulation\sim_s11_iter0-3_and_koch_only.csv  (5505 rows)
+LOAD  sim_fw: data\simulation\sim_s11_feed_width_sweep.csv  (3303 rows)
+LOAD  sim_pad: data\simulation\sim_s11_radiation_box_pad20mm.csv  (1101 rows)
+LOAD  sim_far: data\simulation\sim_farfield_summary_1-10GHz.csv  (91 rows)
+LOAD  cuts_adapt: data\simulation\sim_gain_cuts_adaptive_freqs.csv  (2172 rows)
+LOAD  cuts_disc: data\simulation\sim_gain_cuts_discrete_freqs.csv  (5792 rows)
+LOAD  fig9_levels: data\derived\fig9_peak_levels_paper_vs_sim.csv  (7 rows)
+LOAD  fig9_scan: data\derived\fig9_convention_scan.csv  (352 rows)
+
+== A. Facts stated in data/README.md ==
+PASS  paper S11: 949 rows  [949]
+PASS  paper Fig 4: 4508 rows  [4508]
+PASS  paper Fig 11: 939 rows  [939]
+PASS  paper Fig 9: 1008 rows  [1008]
+PASS  sim S11 final: 1101 rows  [1101]
+PASS  sim iterations+Koch: 5505 rows  [5505]
+PASS  sim Fw sweep: 3303 rows  [3303]
+PASS  sim pad20: 1101 rows  [1101]
+PASS  sim far field: 91 rows  [91]
+PASS  cuts adaptive: 2172 rows  [2172]
+PASS  cuts discrete: 5792 rows  [5792]
+PASS  fig9 levels: 7 rows  [7]
+PASS  fig9 scan: 352 rows  [352]
+PASS  paper S11 spans 0.51-9.99 GHz
+PASS  paper Fig 11 spans 0.57-9.95 GHz
+PASS  Fig 4: Iter0 starts at 2.07 GHz, others below 0.55 GHz  [{'Iter0': 2.07, 'Iter1': 0.52, 'Iter2': 0.52, 'Iter3': 0.52}]
+PASS  Fig 9 file: 7 panels x 2 curves x 72 angles, angles 0-355 step 5
+PASS  Fig 9 file: 29 rows without radius  [29]
+PASS  sim S11 final: 1-12 GHz, Zo = 50 + j0 everywhere
+PASS  iterations file: designs as documented, 1101 points each
+PASS  Iter3_hybrid_baseline equals the final-design file (max diff <= 0.001 dB)  [0.0005 dB]
+PASS  Fw sweep: Fw = 1.5, 1.73, 1.8, 1101 points each
+PASS  pad20 file: one case, Fw 1.8 and pad 20
+PASS  far field: 1.0-10.0 GHz in 0.1 steps
+PASS  G = D x radiation efficiency within 0.0002 dB  [1.8e-04 dB]
+PASS  radiation efficiency = Prad/Pacc within 1e-6  [5.0e-07]
+PASS  total efficiency equals Prad (1 W incident, inference) within 2e-5  [1.1e-05]
+PASS  g0 <= G in 87 of 91 rows; the other 4 exceed it by <= 3e-5 dB  [87 rows, max excess 2.6e-05]
+PASS  17 rows with peak directivity < 0 dBi: 5 in 1.0-1.4 GHz and 12 in 3.3-4.4 GHz  [17]
+PASS  adaptive cuts at 2.11, 5.78, 9.56 GHz  [[2.11, 5.78, 9.56]]
+PASS  discrete cuts at 3.04, 3.06, 6.92, 6.94, 8.45, 8.48, 9.18, 9.23 GHz  [[3.04, 3.06, 6.92, 6.94, 8.45, 8.48, 9.18, 9.23]]
+PASS  cuts: phi 0/90/180/270, theta 0-180
+PASS  scan: 22 (panel, f, curve) groups x 16 conventions; panels b,d,e,f at two frequencies, a,c,g at one
+PASS  Fig 9 levels: paper cut max within 1.4 dB of text; ours 6.0-23.4 dB below
+PASS  Fig 9 levels: paper_Fig9_center is exactly 0.0 for panels d and e (documented as unexplained)
+
+== B. Headline numbers of the analysis scripts (results/*.csv) ==
+PASS  01: all 7 resonance frequencies within 1.0 % of the paper  [largest 0.95 %]
+PASS  01: dip depths -5.8, -22.2, -13.3, -13.4, -16.0, -28.6, -37.6 dB (+-0.1)
+PASS  01: bands 6 and 7 share one -10 dB band (9.09-9.66 GHz)
+PASS  01: band 1 (2.09 GHz) shallower than -10 dB, bandwidth 0
+PASS  02: RMSE (flat-extension method) 1.70 / 2.85 / 2.75 / 2.80 dB (+-0.02)  [[1.7, 2.85, 2.75, 2.8]]
+PASS  02: dips <= -10 dB, paper 2/3/5/7, ours 2/5/5/6
+PASS  02: every paper dip <= -10 dB of Iter0-2 has one of ours within 2 % in frequency  [largest 1.7 %]
+PASS  03: Koch-only dips (>= 1 dB prominence): 2.17/-6.5, 3.07/-23.9, 5.93/-16.1, 6.95/-12.7, 7.98/-13.1, 9.21/-22.4, 9.99/-45.3, 10.62/-22.2
+PASS  03: Koch-only S11 never below -20 dB near 7.2 GHz (paper: < -20 dB)  [deepest in 7.0-7.4 GHz: -11.3 dB]
+PASS  03: Koch-only deepest S11 below 9.5 GHz is above -25 dB (paper: better than -25 dB at 5.8-6.2 GHz)  [-23.9 dB]
+PASS  03: all 5 Fig 7 claims come out 'NOT matched' in the claims table
+PASS  04: VSWR agrees within 0.1 only in bands 2 and 6
+PASS  04: our VSWR at 2.11 GHz is 3.20 (> the paper's stated 1.8)
+PASS  05: cut maxima at the 7 frequencies -2.32, -14.81, -0.97, 1.61, -2.70, -6.15, -0.06 dBi (+-0.01)
+PASS  05: paper text gain exceeds our cut maximum by 6.2-23.0 dB
+PASS  05: sweep statistics as documented (11 values, +-0.01)
+PASS  06: null test (16 conventions): matched best is highest of 7 only for a-H (0.878) and d-H (0.569)
+PASS  06: null test: matched below the null median in 7 of 14, below the null maximum in 12 of 14 (16 conventions)
+PASS  06: null test (z-consistent conventions): matched never highest of 7
+
+54 passed, 0 failed, 54 checks

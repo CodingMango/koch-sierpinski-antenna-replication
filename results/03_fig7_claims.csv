@@ -1,0 +1,6 @@
+claim,ours_nearest_dip_GHz,ours_dip_dB,df_pct,result
+"dip near 2.0 GHz, about -10 dB",2.17,-6.5,8.5,NOT matched (no dip within 3 %)
+"dip near 2.9 GHz, about -10 dB",3.07,-23.9,5.9,NOT matched (no dip within 3 %)
+"dip near 7.2 GHz, below -20 dB",6.95,-12.7,-3.5,NOT matched (no dip within 3 %)
+"5.8-6.2 GHz: band of nearly 1000 MHz, RL better than -25 dB",5.93,-16.1,,"NOT matched: our -10 dB band there is 75 MHz, deepest -16.1 dB"
+"9.7 GHz: -11 dB, 700 MHz wide",9.99,-45.3,3.0,"NOT matched: our -10 dB band there is 236 MHz wide (claimed 700), dip 3.0 % from 9.7 GHz"
