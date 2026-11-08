@@ -15,6 +15,189 @@ Under this setup:
 
 "Not reproduced" means my model disagrees under assumptions the paper does not confirm. It does not show the paper is wrong. The details, with the file and script behind every number, are in [`docs/claims_vs_evidence.md`](docs/claims_vs_evidence.md).
 
+## Where to start (pick your question)
+
+| I want to... | Open this |
+|---|---|
+| Get the verdict in 2 minutes | This README: *Summary* above and *Results at a glance* below |
+| See every claim, its evidence file, script and confidence | [`docs/claims_vs_evidence.md`](docs/claims_vs_evidence.md) |
+| Know exactly what I assumed in HFSS | *Assumptions* below and [`hfss/hfss_setup_notes.md`](hfss/hfss_setup_notes.md) |
+| Check one paper figure | *Status by figure* below, then the figure and table with the same number in `figures/` and `results/` |
+| Reuse the data (CSV) | [`data/README.md`](data/README.md): one entry per file, with every column explained |
+| Re-run all the analysis | *Reproduce* below (`python scripts/run_all.py`) |
+| Rebuild the antenna in my own solver | `geometry/` (DXF files, vertex table, generator script) and `hfss/hfss_setup_notes.md` |
+| Open the HFSS project | `hfss/KochSierp_v1_baseline.aedt` (needs ANSYS HFSS; the free Student version works) |
+| Find out how a number was made | *Trace a number* below |
+| Reuse or cite this work | *Licences and credits* at the end |
+
+## Repository map
+
+The picture below shows the five blocks of the repository. Data flows from left to right: **inputs** (geometry, HFSS project, data files) are processed by **scripts** into **outputs** (`results/`, `figures/`), and the claims table connects the outputs to the statements made in this README.
+
+```mermaid
+mindmap
+  root((Koch-Sierpinski replication))
+    Read first
+      README.md
+      docs/claims_vs_evidence.md
+      data/README.md
+      hfss/hfss_setup_notes.md
+    Inputs
+      geometry
+        vertices_quadrant.csv
+        make_geometry.py
+        feed_dimensions.csv
+        dxf folder with 5 DXF files
+      hfss
+        KochSierp_v1_baseline.aedt
+        hfss_setup_notes.md
+      data
+        paper_digitized
+          values read off the paper figures
+        simulation
+          my HFSS exports
+        derived
+          tables computed from both
+    Processing
+      scripts
+        00 to 00d checks
+        01 to 08 analysis
+        _common.py
+        run_all.py
+    Outputs
+      results
+        tables as CSV
+        run_all_log.txt
+      figures
+        PNG figures 01 to 08
+      docs/verification
+        overlay checks of digitization and geometry
+    Housekeeping
+      LICENSE
+      DATA_LICENSE.md
+      requirements.txt
+      requirements-lock.txt
+      .gitignore
+      .gitattributes
+```
+
+### Annotated file tree
+
+```
+koch-sierpinski-antenna-replication/
+│
+├── README.md                    <- this file: overview, results, how to use the repository
+├── LICENSE                      <- MIT licence (code)
+├── DATA_LICENSE.md              <- CC BY 4.0 (simulation data, tables, figures) + credit for digitized paper data
+├── requirements.txt             <- Python packages needed (loose versions)
+├── requirements-lock.txt        <- exact package versions used (use this one to reproduce)
+├── .gitignore  .gitattributes   <- Git housekeeping, nothing scientific
+│
+├── docs/
+│   ├── claims_vs_evidence.md    <- THE reference table: every claim -> evidence file -> script -> status -> confidence
+│   └── verification/            <- overlay checks: my digitized curves and my geometry drawn on top of
+│                                   the paper's figures (report .txt, edge table .csv, overlay .png images)
+│
+├── geometry/                    <- the antenna outline, rebuilt from the paper's Figs 1-2
+│   ├── vertices_quadrant.csv    <- 13 outline vertices of one quadrant (mm); the other three are mirrored
+│   ├── make_geometry.py         <- builds all five DXF files and runs 26 self-checks
+│   ├── feed_dimensions.csv      <- feed rectangle per design (the DXF files contain no feed)
+│   └── dxf/                     <- one DXF per design, layers PATCH (outline) and HOLES (slots)
+│       ├── Iter0_triangle.dxf               single triangle
+│       ├── Iter1_triangle_slot5.dxf         + 5 mm central slot
+│       ├── Iter2_hexagram_carpet2.dxf       hexagram + 5 mm slot + eight 5/3 mm slots
+│       ├── KochSierpinski_patch_v3_nofeed.dxf   final design (48-vertex outline + 73-slot carpet)
+│       └── KochOnly_noslots.dxf             final outline without slots (Fig 7 variant)
+│
+├── hfss/
+│   ├── KochSierp_v1_baseline.aedt   <- baseline HFSS project (geometry and setup only, no stored results)
+│   └── hfss_setup_notes.md          <- every HFSS setting: confirmed, as built, or assumed; solver convergence numbers
+│
+├── data/                        <- all numbers behind the figures (column dictionary: data/README.md)
+│   ├── README.md
+│   ├── paper_digitized/         <- values I read off the paper's figures (about +-1 dB), NOT the authors' data
+│   │   ├── paper_s11_final_simulated_digitized.csv   Fig 5, simulated S11 of the final design
+│   │   ├── paper_fig4_s11_iter0-3_digitized.csv      Fig 4, S11 of iterations 0-3
+│   │   ├── paper_fig11_gain_vs_freq_digitized.csv    Fig 11, gain vs frequency
+│   │   └── paper_fig9_patterns_raw_pixels.csv        Fig 9 patterns, radius in pixels (uncalibrated)
+│   ├── simulation/              <- my HFSS exports (assumed setup, see Assumptions)
+│   │   ├── sim_s11_vswr_final_design.csv             final design S11 and VSWR, 1-12 GHz
+│   │   ├── sim_s11_iter0-3_and_koch_only.csv         iterations 0-3 and the Koch-only variant
+│   │   ├── sim_s11_feed_width_sweep.csv              sensitivity: feed width 1.5 / 1.73 / 1.8 mm
+│   │   ├── sim_s11_radiation_box_pad20mm.csv         sensitivity: 20 mm radiation box
+│   │   ├── sim_s11_copper_loss.csv                   sensitivity: finite-conductivity copper
+│   │   ├── sim_s11_port_7x4mm.csv                    sensitivity: smaller wave port
+│   │   ├── sim_s11_lumped_port.csv                   sensitivity: lumped port
+│   │   ├── sim_farfield_summary_1-10GHz.csv          peak gain, directivity, efficiency, 91 frequencies
+│   │   ├── sim_gain_cuts_adaptive_freqs.csv          gain cuts at 2.11, 5.78, 9.56 GHz
+│   │   └── sim_gain_cuts_discrete_freqs.csv          gain cuts at 8 further frequencies
+│   └── derived/                 <- tables computed from the two groups above
+│       ├── fig9_peak_levels_paper_vs_sim.csv         Fig 9 peak levels vs text vs mine
+│       └── fig9_convention_scan.csv                  angle-convention test for the Fig 9 shapes
+│
+├── scripts/
+│   ├── 00_verify_data.py                <- 133 checks: data files, column meanings, numbers quoted in the notes
+│   ├── 00b_overlay_check.py             <- 68 checks: digitized curves lie on the paper's drawn curves
+│   ├── 00c_geometry_overlay_check.py    <- 64 checks: my geometry lies on the paper's Figs 1-2
+│   ├── 00d_verify_results.py            <- 64 checks: README facts and headline numbers match results/
+│   ├── 01_s11_final_vs_paper.py         <- 7 resonances, depths, bandwidths, RMSE
+│   ├── 02_fig4_iterations.py            <- Fig 4: dips, counts, RMSE per iteration
+│   ├── 03_fig7_koch_only.py             <- Fig 7 claims vs the Koch-only model
+│   ├── 04_fig8_vswr.py                  <- Fig 8: VSWR at the 7 frequencies
+│   ├── 05_gain_and_efficiency.py        <- Figs 9-11: gain, directivity, efficiency, aperture yardstick
+│   ├── 06_fig9_patterns.py              <- Fig 9: levels and the angle-convention test with a null
+│   ├── 07_make_hero_figure.py           <- the 1280 x 640 figure at the top of this README
+│   ├── 08_sensitivity_sweeps.py         <- setup-sensitivity cases (feed, box, copper, ports)
+│   ├── _common.py                       <- shared loaders, dip finder, plotting helpers (not run directly)
+│   └── run_all.py                       <- runs 00, 01-08, 00d in order; expected last line: ALL OK
+│
+├── figures/                     <- PNG output of the scripts; the number matches the script (01 <- 01_...py)
+│   └── 01_s11_final_vs_paper  02_fig4_iterations  03_fig7_koch_only  04_fig8_vswr
+│       05_gain_and_efficiency  06_fig9_patterns  07_hero_figure  08_sensitivity_sweeps
+│
+└── results/                     <- numeric output of the scripts (CSV), same numbering
+    ├── 01_s11_resonances.csv
+    ├── 02_fig4_dips.csv  02_fig4_summary.csv
+    ├── 03_fig7_claims.csv  03_fig7_dips.csv
+    ├── 04_vswr_at_paper_frequencies.csv
+    ├── 05_gain_at_paper_frequencies.csv  05_farfield_summary_stats.csv
+    ├── 06_fig9_levels.csv  06_fig9_null_test.csv
+    ├── 08_sensitivity_dips.csv  08_sensitivity_summary.csv
+    └── run_all_log.txt          <- full console output of the last run_all.py
+```
+
+### How the pieces connect
+
+```
+paper figures ──(digitize)──> data/paper_digitized/ ─┐
+                                                     ├──> scripts/01-08 ──> results/*.csv + figures/*.png ──> docs/claims_vs_evidence.md ──> README
+Figs 1-2 ──(read vertices)──> geometry/ ──(import)──> HFSS ──(export)──> data/simulation/ ─┘
+                                                      ^
+                                           hfss/hfss_setup_notes.md (what was assumed)
+```
+
+Rule of thumb: **`data/` holds inputs, `results/` and `figures/` hold outputs, `docs/claims_vs_evidence.md` holds the interpretation.** Nothing in `results/` or `figures/` is edited by hand; delete them and `run_all.py` recreates them.
+
+## Results at a glance
+
+**Resonances (final design).** Paper values are from its text; mine are the S11 dips of my baseline model. Source: `results/01_s11_resonances.csv`.
+
+| Paper (GHz) | 2.11 | 3.06 | 5.78 | 6.94 | 8.48 | 9.23 | 9.56 |
+|---|---|---|---|---|---|---|---|
+| My dip (GHz) | 2.09 | 3.04 | 5.76 | 6.92 | 8.45 | 9.18 | 9.54 |
+| Difference | 0.95 % | 0.65 % | 0.35 % | 0.29 % | 0.35 % | 0.54 % | 0.21 % |
+| Paper return loss (dB) | -14 | -12 | -16 | -10 | -30 | -16 | -17 |
+| My dip depth (dB) | -5.8 | -22.2 | -13.3 | -13.4 | -16.0 | -28.6 | -37.6 |
+
+**Gain.** Paper text vs my maximum over the four exported phi cuts (a lower bound of the true peak; see Limitations). Source: `results/05_gain_at_paper_frequencies.csv`.
+
+| Frequency (GHz) | 2.11 | 3.06 | 5.78 | 6.94 | 8.48 | 9.23 | 9.56 |
+|---|---|---|---|---|---|---|---|
+| Paper text (dBi) | 3.92 | 8.24 | 6.90 | 11.66 | 19.38 | 16.76 | 12.06 |
+| Mine, cut maximum (dBi) | -2.32 | -14.81 | -0.97 | +1.61 | -2.70 | -6.15 | -0.06 |
+
+Over the whole 1-10 GHz sweep my peak gain is at most +4.45 dBi and my peak directivity at most 9.28 dBi. These numbers depend on the assumed setup, and an S11 match does not validate gain.
+
 ## Status by figure
 
 | Paper figure | Status |
@@ -70,6 +253,8 @@ python scripts/run_all.py
 
 `run_all.py` runs the data check, analysis scripts 01-08 and the results check, writes the figures to `figures/` and the tables to `results/`, and keeps `results/run_all_log.txt`. Expected last line: `ALL OK`. Inputs are found by file name anywhere below `data/`; use `--data-dir` for another folder.
 
+Every script prints the file it loaded, so the console output shows which data each number came from. To run one analysis alone, for example the S11 comparison: `python scripts/01_s11_final_vs_paper.py --data-dir data`.
+
 Other checks:
 
 ```
@@ -82,19 +267,26 @@ Rebuilds the geometry in memory and runs 26 self-checks. Without `--check-only` 
 
 What the checks cover: 133 data checks, 64 results checks, 68 digitization overlay checks, 64 geometry overlay checks, 26 geometry self-checks. They show that files, notes and results agree with each other. They do not show that an interpretation is right.
 
-## Repository layout
+## Trace a number
 
-```
-docs/       claims_vs_evidence.md, verification/ (overlay report and images)
-geometry/   vertices_quadrant.csv, make_geometry.py, feed_dimensions.csv, dxf/
-hfss/       KochSierp_v1_baseline.aedt (no results), hfss_setup_notes.md
-data/       README.md, paper_digitized/, simulation/, derived/
-scripts/    00_ and 00b-00d_ checks, 01-08 analysis, run_all.py
-figures/    output of run_all.py
-results/    output tables and run_all_log.txt
+Every number in this README can be followed back to a data file in four steps. Example: "2.11 GHz: -5.8 dB".
+
+1. **Claim:** find it in [`docs/claims_vs_evidence.md`](docs/claims_vs_evidence.md) (here: row 1.2). The row names the evidence file, the script, the status and the confidence.
+2. **Result table:** open the evidence file (here `results/01_s11_resonances.csv`).
+3. **Script:** open the script named in the row (here `scripts/01_s11_final_vs_paper.py`). Its header states the method, tolerances and inputs.
+4. **Raw data:** open the input file (here `data/simulation/sim_s11_vswr_final_design.csv`). Column meanings are in [`data/README.md`](data/README.md).
+
+To read a value yourself:
+
+```python
+import pandas as pd
+
+s11 = pd.read_csv("data/simulation/sim_s11_vswr_final_design.csv")
+row = s11.loc[(s11["Freq [GHz]"] - 2.11).abs().idxmin()]
+print(row["Freq [GHz]"], row["dB(S(1,1)) []"])   # about -5.6 dB at 2.11 GHz; the dip itself is -5.8 dB at 2.09 GHz
 ```
 
-Column dictionary for every data file: [`data/README.md`](data/README.md).
+How to read the **status** words in the claims table: *Reproduced* = my model agrees within the stated tolerance; *Not reproduced (this setup)* = it disagrees, which does not show the paper is wrong; *Observation* = a measured fact without a verdict; *Inconclusive* = the test cannot separate the hypotheses; *Not checkable here* = the evidence is not stored in this repository.
 
 ## Licences and credits
 
