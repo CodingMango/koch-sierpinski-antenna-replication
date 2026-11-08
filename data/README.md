@@ -39,6 +39,18 @@ Paper's Fig 9 radiation patterns, **uncalibrated**. 1008 rows (7 panels x 2 curv
 
 ## simulation/
 
+### sim_s11_lumped_port.csv
+Final design with a lumped port instead of the wave port (radiation-box padding also added on the +X side). 1101 rows, 1-12 GHz, 0.01 GHz step.
+- `Freq [GHz]`, `dB(S(Port1,Port1)) []` (S11 in dB; the header differs from the other S11 files)
+
+### sim_s11_copper_loss.csv
+Final design with finite-conductivity conductors (no thickness) instead of Perfect E. 1101 rows, 1-12 GHz, 0.01 GHz step.
+- `Freq [GHz]`, `dB(S(1,1)) []`
+
+### sim_s11_port_7x4mm.csv
+Final design with a 7 x 4 mm wave port instead of 10 x 6 mm. 1101 rows, 1-12 GHz, 0.01 GHz step.
+- `Freq [GHz]`, `dB(S(1,1)) []`
+
 ### sim_s11_vswr_final_design.csv
 Final design. 1101 rows, 1-12 GHz, 0.01 GHz step.
 - `Freq [GHz]`, `dB(S(1,1)) []` (dB), `VSWR(1) []`
