@@ -1,5 +1,7 @@
 # Koch-Sierpinski antenna replication
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24056371.svg)](https://doi.org/10.5281/zenodo.24056371)
+
 Simulation-only replication of a hybrid Koch-Sierpinski fractal antenna: Azzouz et al., *Fractal Fract.* 2026, 10, 47 ([doi:10.3390/fractalfract10010047](https://doi.org/10.3390/fractalfract10010047)). Ansys HFSS and Python.
 
 ![Resonances reproduced, gain not reproduced under the assumed setup](figures/07_hero_figure.png)
@@ -289,6 +291,14 @@ print(row["Freq [GHz]"], row["dB(S(1,1)) []"])   # about -5.6 dB at 2.11 GHz; th
 ```
 
 How to read the **status** words in the claims table: *Reproduced* = my model agrees within the stated tolerance; *Not reproduced (this setup)* = it disagrees, which does not show the paper is wrong; *Observation* = a measured fact without a verdict; *Inconclusive* = the test cannot separate the hypotheses; *Not checkable here* = the evidence is not stored in this repository.
+
+## How to cite
+
+If you use this repository, please cite it (this DOI always points to the latest version):
+
+A. Jabbar Khan (2026). *Simulation-only replication of a Koch-Sierpinski hybrid fractal antenna (Azzouz et al., Fractal Fract. 2026, 10, 47)* [Software and data]. Zenodo. https://doi.org/10.5281/zenodo.24056371
+
+Please also cite the original paper (see "Original paper" below). The digitized values in `data/paper_digitized/` come from its figures.
 
 ## Licences and credits
 

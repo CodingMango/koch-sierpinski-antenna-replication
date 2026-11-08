@@ -9,6 +9,7 @@ authors:
 repository-code: "https://github.com/CodingMango/koch-sierpinski-antenna-replication"
 license: MIT
 version: "1.0"
+doi: 10.5281/zenodo.24056371
 date-released: "2026-11-08"
 keywords:
   - fractal antenna
