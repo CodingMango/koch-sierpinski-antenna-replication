@@ -44,7 +44,7 @@ Final design with a lumped port instead of the wave port (radiation-box padding 
 - `Freq [GHz]`, `dB(S(Port1,Port1)) []` (S11 in dB; the header differs from the other S11 files)
 
 ### sim_s11_copper_loss.csv
-Final design with finite-conductivity conductors (no thickness) instead of Perfect E. 1101 rows, 1-12 GHz, 0.01 GHz step.
+Final design with finite-conductivity conductors (no thickness; HFSS default copper, bulk conductivity 58,000,000 S/m) instead of Perfect E. 1101 rows, 1-12 GHz, 0.01 GHz step.
 - `Freq [GHz]`, `dB(S(1,1)) []`
 
 ### sim_s11_port_7x4mm.csv
@@ -117,4 +117,4 @@ Test of which angle convention would make our simulated gain cuts match the pape
 - `off`: angle offset in degrees, 0, 90, 180 or 270
 - `pearson`, `spearman`: shape correlation between the paper curve and the simulated cut
 
-Summary (computed from this file, paper frequencies only): for the eight conventions that put the antenna axis at the top and bottom of the plot (`off` = 90 or 270), the mean Pearson correlation over the 14 curves is between -0.105 and -0.001 per convention. The best of the 16 conventions per curve reaches 0.22-0.88, but the winning convention differs from curve to curve, and no mismatched-frequency null is stored here, so these maxima are not evidence for any convention. The exact formula mapping `s` and `off` to the plotted angle is defined in the script that produced this file, which is defined in scripts/06_fig9_patterns.py, which reproduces this file.
+Summary (computed from this file, paper frequencies only): for the eight conventions that put the antenna axis at the top and bottom of the plot (`off` = 90 or 270), the mean Pearson correlation over the 14 curves is between -0.105 and -0.001 per convention. The best of the 16 conventions per curve reaches 0.22-0.88, but the winning convention differs from curve to curve, and no mismatched-frequency null is stored here, so these maxima are not evidence for any convention. The exact formula mapping `s` and `off` to the plotted angle is implemented in `scripts/06_fig9_patterns.py`, which reproduces this file.

@@ -48,10 +48,11 @@ Each variant changes one item of the baseline; the lumped-port variant changes t
 | Variant | Change from the baseline | Tetrahedra | Passes | Final Delta S | Solve time (as typed) |
 |---|---|---|---|---|---|
 | Lumped port | Lumped port of size Fw x h = 1.8 x 0.8 mm, integration line from ground to feed, 50 ohm, renormalised to 50 ohm; radiation-box padding added on the +X side (37.5 mm; the baseline leaves +X at 0) | 36,938 | 10 | 0.016881 | 29:48 |
-| Copper | Finite-conductivity conductors instead of Perfect E (zero thickness; conductivity value: ["default value"]) | 40,666 | 11 | 0.014311 | 25:37 |
+| Copper | Finite-conductivity conductors instead of Perfect E (zero thickness; conductivity: HFSS default for copper, bulk conductivity 58,000,000 S/m, not changed by the author) | 40,666 | 11 | 0.014311 | 25:37 |
 | Wave port 7 x 4 mm | Wave port Wp x Hp = 7 x 4 mm instead of 10 x 6 mm | 17,531 | 6 | 0.018536 | 7:46 |
 
 - The lumped port could not be solved with the +X side unpadded (error: only one conductor touches the lumped port). Padding that side removed the error.
+- The baseline wave-port run had "Use Radiation Boundary on Ports" unchecked (the default; author-confirmed, 8 Nov 2026).
 - The lumped-port run was first solved with "Use Radiation Boundary on Ports" checked, then again with it unchecked. The two S11 exports are identical (largest difference 0.0 dB over 1101 points), so the option had no effect there. The unchecked run is the one stored.
 - Adaptive setup and sweep as in the baseline (author confirmed for the lumped run; assumed for the other two).
 - The copper run reached 40,666 tetrahedra, the largest mesh recorded under the Student cap.
@@ -59,13 +60,13 @@ Each variant changes one item of the baseline; the lumped-port variant changes t
 ## Far-field setups (CONFIRMED: read from `KochSierp_v3_farfield.aedt` by the author, 8 Nov 2026)
 
 - **Infinite sphere `FF_sphere`:** phi 0-360 deg in 5 deg steps, theta 0-180 deg in 1 deg steps. Peak values are therefore sampled on a 5 x 1 deg grid; a narrow lobe between grid points could be slightly higher than reported.
-- **`Gain_Sweep`:** Discrete sweep, 1-10 GHz, linear step 0.1 GHz (91 points), save fields on. Source of `data/simulation/sim_farfield_summary_1-10GHz.csv` (the working file name was `sweep3_summary.csv`; assumed to be this sweep). Solve: 39,514 tetrahedra, 11 passes, final Delta S 0.017235, total time 50:05. These equal the baseline S11 solve, so the sweep reuses the baseline adaptive mesh.
-- **`Disc_Fields`:** Discrete sweep at single points 3.04, 3.06, 6.92, 6.94, 8.45, 8.48, 9.18, 9.23 GHz, save fields on. Source of `data/simulation/sim_gain_cuts_discrete_freqs.csv`. Mesh, passes and time were not recorded.
+- **`Gain_Sweep`:** Discrete sweep, 1-10 GHz, linear step 0.1 GHz (91 points), save fields on. Source of `data/simulation/sim_farfield_summary_1-10GHz.csv` (the working file name was `sweep3_summary.csv`; author-confirmed to be this sweep). Solve: 39,514 tetrahedra, 11 passes, final Delta S 0.017235, total time 50:05. These equal the baseline S11 solve, so the sweep reuses the baseline adaptive mesh.
+- **`Disc_Fields`:** Discrete sweep at single points 3.04, 3.06, 6.92, 6.94, 8.45, 8.48, 9.18, 9.23 GHz, save fields on. Source of `data/simulation/sim_gain_cuts_discrete_freqs.csv`. It sits under `Setup1` in the Project Manager tree (author-confirmed, 8 Nov 2026), so it uses the `Setup1` adaptive mesh; passes and solve time were not recorded.
 - **Cuts at 2.11, 5.78 and 9.56 GHz** (`sim_gain_cuts_adaptive_freqs.csv`) come from the last adaptive pass at the adaptive frequencies, not from a sweep.
 - **Exported cut planes:** phi = 0, 90, 180, 270 deg, theta 0-180 deg in 1 deg steps. The four phi values lie on the 5 deg sphere grid, but only these four planes were exported, so the maximum over the exported cuts can be below the true peak.
 
 ## Limits
 
 - Far-field results come from the setups above; the Student mesh cap applies to them as to the S11 solves.
-- Far-field setups (`FF_sphere`, `Disc_Fields`, `Gain_Sweep` in `KochSierp_v3_farfield.aedt`) are **not documented here yet**. The far-field exports are `data/simulation/sim_farfield_summary_1-10GHz.csv` and the two `sim_gain_cuts_*.csv` files.
+- The far-field exports are `data/simulation/sim_farfield_summary_1-10GHz.csv` and the two `sim_gain_cuts_*.csv` files; their setups are documented in the section above.
 - Boundary and material settings in the table above come from the build instructions; only `Setup1` and `Sweep1` were read back from the project.
