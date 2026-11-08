@@ -19,6 +19,7 @@ Under this setup:
 
 | I want to... | Open this |
 |---|---|
+| Read the full write-up | docs/replication_report.pdf |
 | Get the verdict in 2 minutes | This README: *Summary* above and *Results at a glance* below |
 | See every claim, its evidence file, script and confidence | [`docs/claims_vs_evidence.md`](docs/claims_vs_evidence.md) |
 | Know exactly what I assumed in HFSS | *Assumptions* below and [`hfss/hfss_setup_notes.md`](hfss/hfss_setup_notes.md) |
@@ -94,6 +95,7 @@ koch-sierpinski-antenna-replication/
 ├── .gitignore  .gitattributes   <- Git housekeeping, nothing scientific
 │
 ├── docs/
+|   ├── replication_report.pdf <- full write-up: method, results by figure, limits.
 │   ├── claims_vs_evidence.md    <- THE reference table: every claim -> evidence file -> script -> status -> confidence
 │   └── verification/            <- overlay checks: my digitized curves and my geometry drawn on top of
 │                                   the paper's figures (report .txt, edge table .csv, overlay .png images)
