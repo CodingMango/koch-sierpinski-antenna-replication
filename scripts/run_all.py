@@ -15,7 +15,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 SCRIPTS = ["01_s11_final_vs_paper.py", "02_fig4_iterations.py", "03_fig7_koch_only.py", "04_fig8_vswr.py",
-           "05_gain_and_efficiency.py", "06_fig9_patterns.py", "07_make_hero_figure.py"]
+           "05_gain_and_efficiency.py", "06_fig9_patterns.py", "07_make_hero_figure.py",
+           "08_sensitivity_sweeps.py"]
 
 
 def main():

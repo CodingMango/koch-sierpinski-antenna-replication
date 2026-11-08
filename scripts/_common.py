@@ -31,6 +31,11 @@ FILES = {
     "sim_far":      ["sim_farfield_summary_1-10GHz.csv", "sweep3_summary.csv"],
     "cuts_adapt":   ["sim_gain_cuts_adaptive_freqs.csv", "Gain_setup1_lastadaptive.csv"],
     "cuts_disc":    ["sim_gain_cuts_discrete_freqs.csv", "Gain_setup1_Disc_fields.csv"],
+    "sim_fw":       ["sim_s11_feed_width_sweep.csv", "S11_Fw_sweep.csv"],
+    "sim_pad":      ["sim_s11_radiation_box_pad20mm.csv", "S11_pad20.csv"],
+    "sim_copper":   ["sim_s11_copper_loss.csv", "S11_T2_copper.csv"],
+    "sim_port":     ["sim_s11_port_7x4mm.csv", "S11_T3_port7x4.csv"],
+    "sim_lumped":   ["sim_s11_lumped_port.csv", "S11_T1c_lumped.csv"],
     "fig9_levels":  ["fig9_peak_levels_paper_vs_sim.csv", "fig9_levels_comparison.csv"],
     "fig9_scan":    ["fig9_convention_scan.csv"],
 }

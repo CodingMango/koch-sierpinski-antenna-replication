@@ -15,10 +15,6 @@ import pandas as pd
 
 import _common as C
 
-C.FILES.update({
-    "sim_fw":  ["sim_s11_feed_width_sweep.csv", "S11_Fw_sweep.csv"],
-    "sim_pad": ["sim_s11_radiation_box_pad20mm.csv", "S11_pad20.csv"],
-})
 results = []
 
 
@@ -36,13 +32,13 @@ def main():
     args = ap.parse_args()
     D = args.data_dir
     ps, p4, p11, p9 = (C.load(D, k) for k in ("paper_s11", "paper_fig4", "paper_fig11", "paper_fig9"))
-    s1, si, fw, pad, far, ca, cd, lev, scan = (C.load(D, k) for k in
-        ("sim_s11", "sim_iters", "sim_fw", "sim_pad", "sim_far", "cuts_adapt", "cuts_disc", "fig9_levels", "fig9_scan"))
+    s1, si, fw, pad, cop, prt, lum, far, ca, cd, lev, scan = (C.load(D, k) for k in
+        ("sim_s11", "sim_iters", "sim_fw", "sim_pad", "sim_copper", "sim_port", "sim_lumped", "sim_far", "cuts_adapt", "cuts_disc", "fig9_levels", "fig9_scan"))
 
     print("\n== A. Facts stated in data/README.md ==")
     for name, df, n in [("paper S11", ps, 949), ("paper Fig 4", p4, 4508), ("paper Fig 11", p11, 939), ("paper Fig 9", p9, 1008),
                         ("sim S11 final", s1, 1101), ("sim iterations+Koch", si, 5505), ("sim Fw sweep", fw, 3303),
-                        ("sim pad20", pad, 1101), ("sim far field", far, 91), ("cuts adaptive", ca, 2172),
+                        ("sim pad20", pad, 1101), ("sim copper loss", cop, 1101), ("sim port 7x4", prt, 1101), ("sim lumped port", lum, 1101), ("sim far field", far, 91), ("cuts adaptive", ca, 2172),
                         ("cuts discrete", cd, 5792), ("fig9 levels", lev, 7), ("fig9 scan", scan, 352)]:
         check(f"{name}: {n} rows", len(df) == n, str(len(df)))
     check("paper S11 spans 0.51-9.99 GHz", close(ps.iloc[:, 0].min(), 0.51, 1e-6) and close(ps.iloc[:, 0].max(), 9.99, 1e-6))
@@ -61,6 +57,8 @@ def main():
     check("Iter3_hybrid_baseline equals the final-design file (max diff <= 0.001 dB)", d <= 1e-3, f"{d:.4f} dB")
     check("Fw sweep: Fw = 1.5, 1.73, 1.8, 1101 points each", set(fw["Fw [mm]"].round(2)) == {1.5, 1.73, 1.8} and fw.groupby("Fw [mm]").size().eq(1101).all())
     check("pad20 file: one case, Fw 1.8 and pad 20", pad["Fw [mm]"].nunique() == 1 and close(pad["Fw [mm]"].iloc[0], 1.8, 1e-9) and pad["pad [mm]"].nunique() == 1 and pad["pad [mm]"].iloc[0] == 20)
+    check("lumped, copper and port-size files: 1-12 GHz on the same 0.01 GHz grid as the final-design file, S11 in column 2",
+          all(np.allclose(x.iloc[:, 0].to_numpy(), s1["Freq [GHz]"].to_numpy()) and x.iloc[:, 1].max() < 0 and "S(" in x.columns[1] for x in (lum, cop, prt)))
     f = far["f"].to_numpy()
     check("far field: 1.0-10.0 GHz in 0.1 steps", len(f) == 91 and np.allclose(np.diff(f), 0.1, atol=1e-6) and close(f[0], 1.0, 1e-9))
     gd = np.abs(far["G_dBi"] - (far["D_dBi"] + 10 * np.log10(far["Radiation Efficiency"]))).max()
@@ -109,6 +107,18 @@ def main():
         for fp_ in po["dip_f_GHz"]:
             worst = max(worst, float((ou["dip_f_GHz"] - fp_).abs().min() / fp_))
     check("02: every paper dip <= -10 dB of Iter0-2 has one of ours within 2 % in frequency", worst <= 0.02, f"largest {100 * worst:.1f} %")
+    r8 = pd.read_csv(f"{R}/08_sensitivity_dips.csv"); s8 = pd.read_csv(f"{R}/08_sensitivity_summary.csv").set_index("case")
+    b1, b5 = r8[r8["band"] == 1]["dip_dB"], r8[r8["band"] == 5]["dip_dB"]
+    check("08: band-1 (2.1 GHz) dip depth over the 8 setup cases lies between -7.6 and -5.8 dB (paper text -14)", close(b1.min(), -7.6, 0.05) and close(b1.max(), -5.8, 0.05), f"{b1.min()} to {b1.max()}")
+    check("08: band-5 (8.4 GHz) dip depth over the 8 cases lies between -16.5 and -14.7 dB (paper text -30)", close(b5.min(), -16.5, 0.05) and close(b5.max(), -14.7, 0.05), f"{b5.min()} to {b5.max()}")
+    lp = r8[r8["case"].str.startswith("lumped")].set_index("band")["dip_f_GHz"]; bp = r8[r8["case"].str.startswith("baseline")].set_index("band")["dip_f_GHz"]
+    check("08: lumped-port dip frequencies within 20 MHz of the wave-port baseline in all 7 bands", float((lp - bp).abs().max()) <= 0.0201, f"largest {1000 * float((lp - bp).abs().max()):.0f} MHz")
+    mx = s8["max_dip_freq_diff_to_paper_pct"]
+    within = sorted(mx.index[mx <= 1.0])
+    check("08: cases with all 7 dips within 1.0 % of the paper: baseline, Fw 1.73, Fw 1.8, box 20 mm, copper, lumped (NOT Fw 1.5 mm, NOT wave port 7 x 4 mm)",
+          within == sorted(["baseline (wave port)", "Fw 1.73 mm", "Fw 1.8 mm", "radiation box 20 mm", "copper (finite conductivity)", "lumped port (+X padded)"]), str(within))
+    check("08: wave port 7 x 4 mm moves dips down by up to 1.6 % vs the paper (largest difference 1.5-1.7 %)", 1.5 <= mx["wave port 7 x 4 mm"] <= 1.7, f"{mx['wave port 7 x 4 mm']} %")
+    check("08: RMSE vs paper S11: baseline 2.92 dB, lumped port 2.82 dB (+-0.02)", close(s8.loc["baseline (wave port)", "RMSE_vs_paper_dB"], 2.92, 0.02) and close(s8.loc["lumped port (+X padded)", "RMSE_vs_paper_dB"], 2.82, 0.02))
     exp = [(2.17, -6.5), (3.07, -23.9), (5.93, -16.1), (6.95, -12.7), (7.98, -13.1), (9.21, -22.4), (9.99, -45.3), (10.62, -22.2)]
     kd = r3[r3["design"] == "Koch-only"]
     check("03: Koch-only dips (>= 1 dB prominence): 2.17/-6.5, 3.07/-23.9, 5.93/-16.1, 6.95/-12.7, 7.98/-13.1, 9.21/-22.4, 9.99/-45.3, 10.62/-22.2",
