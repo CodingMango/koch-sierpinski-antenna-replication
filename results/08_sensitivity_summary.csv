@@ -1,0 +1,9 @@
+case,RMSE_vs_paper_dB,RMSE_vs_baseline_dB,max_dip_freq_diff_to_paper_pct
+baseline (wave port),2.92,0.0,0.95
+Fw 1.5 mm,4.0,2.74,2.74
+Fw 1.73 mm,2.94,0.38,0.95
+Fw 1.8 mm,3.01,0.38,0.95
+radiation box 20 mm,3.05,0.34,0.95
+copper (finite conductivity),3.11,0.62,0.95
+wave port 7 x 4 mm,4.06,2.66,1.63
+lumped port (+X padded),2.82,0.66,0.47

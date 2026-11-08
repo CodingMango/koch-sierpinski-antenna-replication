@@ -373,6 +373,75 @@ WROTE figures\07_hero_figure.png
 size 1280 x 640 px (target 1280 x 640)
 
 ==============================================================================
+08_sensitivity_sweeps.py  ->  OK
+==============================================================================
+LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
+LOAD  sim_fw: data\simulation\sim_s11_feed_width_sweep.csv  (3303 rows)
+LOAD  sim_pad: data\simulation\sim_s11_radiation_box_pad20mm.csv  (1101 rows)
+LOAD  sim_copper: data\simulation\sim_s11_copper_loss.csv  (1101 rows)
+LOAD  sim_port: data\simulation\sim_s11_port_7x4mm.csv  (1101 rows)
+LOAD  sim_lumped: data\simulation\sim_s11_lumped_port.csv  (1101 rows)
+LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
+  baseline (wave port)       1101 points, 1.00-12.00 GHz
+  Fw 1.5 mm                  1101 points, 1.00-12.00 GHz
+  Fw 1.73 mm                 1101 points, 1.00-12.00 GHz
+  Fw 1.8 mm                  1101 points, 1.00-12.00 GHz
+  radiation box 20 mm        1101 points, 1.00-12.00 GHz
+  copper (finite conductivity) 1101 points, 1.00-12.00 GHz
+  wave port 7 x 4 mm         1101 points, 1.00-12.00 GHz
+  lumped port (+X padded)    1101 points, 1.00-12.00 GHz
+
+Dip depth (dB) at the paper's 7 resonances (nearest dip within 3 %); paper text: -14 -12 -16 -10 -30 -16 -17
+band                            1     2     3     4     5     6     7
+case                                                                 
+baseline (wave port)         -5.8 -22.2 -13.3 -13.4 -16.0 -28.6 -37.6
+Fw 1.5 mm                    -7.6 -21.4 -10.5 -13.7 -16.5 -31.6 -25.2
+Fw 1.73 mm                   -6.1 -24.3 -12.6 -14.0 -15.8 -31.9 -28.1
+Fw 1.8 mm                    -5.8 -22.6 -13.0 -13.8 -15.8 -32.3 -33.7
+radiation box 20 mm          -6.0 -22.5 -13.1 -13.1 -16.0 -31.3 -39.3
+copper (finite conductivity) -6.6 -23.4 -12.2 -16.2 -15.0 -36.2 -29.4
+wave port 7 x 4 mm           -5.8 -24.8 -13.2 -12.8 -16.1 -26.9 -37.1
+lumped port (+X padded)      -6.0 -24.0 -13.8 -13.7 -14.7 -33.1 -25.3
+
+Dip frequency (GHz)
+band                             1     2     3     4     5     6     7
+case                                                                  
+baseline (wave port)          2.09  3.04  5.76  6.92  8.45  9.18  9.54
+Fw 1.5 mm                     2.09  3.00  5.73  6.75  8.39  9.11  9.53
+Fw 1.73 mm                    2.09  3.05  5.76  6.91  8.44  9.19  9.53
+Fw 1.8 mm                     2.09  3.05  5.76  6.92  8.44  9.19  9.53
+radiation box 20 mm           2.09  3.04  5.76  6.90  8.44  9.18  9.54
+copper (finite conductivity)  2.09  3.04  5.76  6.93  8.44  9.18  9.53
+wave port 7 x 4 mm            2.09  3.01  5.73  6.83  8.39  9.10  9.50
+lumped port (+X padded)       2.10  3.05  5.76  6.92  8.45  9.19  9.54
+
+Largest dip-frequency difference to the baseline, per case (MHz)
+  baseline (wave port)       0
+  Fw 1.5 mm                  170
+  Fw 1.73 mm                 10
+  Fw 1.8 mm                  10
+  radiation box 20 mm        20
+  copper (finite conductivity) 10
+  wave port 7 x 4 mm         90
+  lumped port (+X padded)    10
+
+RMSE (dB, 1.5-10 GHz, clipped -30 dB)
+                        case  RMSE_vs_paper_dB  RMSE_vs_baseline_dB  max_dip_freq_diff_to_paper_pct
+        baseline (wave port)              2.92                 0.00                            0.95
+                   Fw 1.5 mm              4.00                 2.74                            2.74
+                  Fw 1.73 mm              2.94                 0.38                            0.95
+                   Fw 1.8 mm              3.01                 0.38                            0.95
+         radiation box 20 mm              3.05                 0.34                            0.95
+copper (finite conductivity)              3.11                 0.62                            0.95
+          wave port 7 x 4 mm              4.06                 2.66                            1.63
+     lumped port (+X padded)              2.82                 0.66                            0.47
+
+Band 1 (2.1 GHz) dip depth over all cases: -7.6 to -5.8 dB (paper text: -14); band 5 (8.4 GHz): -16.5 to -14.7 dB (paper text: -30)
+WROTE results\08_sensitivity_dips.csv
+WROTE results\08_sensitivity_summary.csv
+WROTE figures\08_sensitivity_sweeps.png
+
+==============================================================================
 00d_verify_results.py  ->  OK
 ==============================================================================
 LOAD  paper_s11: data\paper_digitized\paper_s11_final_simulated_digitized.csv  (949 rows)
@@ -383,6 +452,9 @@ LOAD  sim_s11: data\simulation\sim_s11_vswr_final_design.csv  (1101 rows)
 LOAD  sim_iters: data\simulation\sim_s11_iter0-3_and_koch_only.csv  (5505 rows)
 LOAD  sim_fw: data\simulation\sim_s11_feed_width_sweep.csv  (3303 rows)
 LOAD  sim_pad: data\simulation\sim_s11_radiation_box_pad20mm.csv  (1101 rows)
+LOAD  sim_copper: data\simulation\sim_s11_copper_loss.csv  (1101 rows)
+LOAD  sim_port: data\simulation\sim_s11_port_7x4mm.csv  (1101 rows)
+LOAD  sim_lumped: data\simulation\sim_s11_lumped_port.csv  (1101 rows)
 LOAD  sim_far: data\simulation\sim_farfield_summary_1-10GHz.csv  (91 rows)
 LOAD  cuts_adapt: data\simulation\sim_gain_cuts_adaptive_freqs.csv  (2172 rows)
 LOAD  cuts_disc: data\simulation\sim_gain_cuts_discrete_freqs.csv  (5792 rows)
@@ -398,6 +470,9 @@ PASS  sim S11 final: 1101 rows  [1101]
 PASS  sim iterations+Koch: 5505 rows  [5505]
 PASS  sim Fw sweep: 3303 rows  [3303]
 PASS  sim pad20: 1101 rows  [1101]
+PASS  sim copper loss: 1101 rows  [1101]
+PASS  sim port 7x4: 1101 rows  [1101]
+PASS  sim lumped port: 1101 rows  [1101]
 PASS  sim far field: 91 rows  [91]
 PASS  cuts adaptive: 2172 rows  [2172]
 PASS  cuts discrete: 5792 rows  [5792]
@@ -413,6 +488,7 @@ PASS  iterations file: designs as documented, 1101 points each
 PASS  Iter3_hybrid_baseline equals the final-design file (max diff <= 0.001 dB)  [0.0005 dB]
 PASS  Fw sweep: Fw = 1.5, 1.73, 1.8, 1101 points each
 PASS  pad20 file: one case, Fw 1.8 and pad 20
+PASS  lumped, copper and port-size files: 1-12 GHz on the same 0.01 GHz grid as the final-design file, S11 in column 2
 PASS  far field: 1.0-10.0 GHz in 0.1 steps
 PASS  G = D x radiation efficiency within 0.0002 dB  [1.8e-04 dB]
 PASS  radiation efficiency = Prad/Pacc within 1e-6  [5.0e-07]
@@ -434,6 +510,12 @@ PASS  01: band 1 (2.09 GHz) shallower than -10 dB, bandwidth 0
 PASS  02: RMSE (flat-extension method) 1.70 / 2.85 / 2.75 / 2.80 dB (+-0.02)  [[1.7, 2.85, 2.75, 2.8]]
 PASS  02: dips <= -10 dB, paper 2/3/5/7, ours 2/5/5/6
 PASS  02: every paper dip <= -10 dB of Iter0-2 has one of ours within 2 % in frequency  [largest 1.7 %]
+PASS  08: band-1 (2.1 GHz) dip depth over the 8 setup cases lies between -7.6 and -5.8 dB (paper text -14)  [-7.6 to -5.8]
+PASS  08: band-5 (8.4 GHz) dip depth over the 8 cases lies between -16.5 and -14.7 dB (paper text -30)  [-16.5 to -14.7]
+PASS  08: lumped-port dip frequencies within 20 MHz of the wave-port baseline in all 7 bands  [largest 10 MHz]
+PASS  08: cases with all 7 dips within 1.0 % of the paper: baseline, Fw 1.73, Fw 1.8, box 20 mm, copper, lumped (NOT Fw 1.5 mm, NOT wave port 7 x 4 mm)  [['Fw 1.73 mm', 'Fw 1.8 mm', 'baseline (wave port)', 'copper (finite conductivity)', 'lumped port (+X padded)', 'radiation box 20 mm']]
+PASS  08: wave port 7 x 4 mm moves dips down by up to 1.6 % vs the paper (largest difference 1.5-1.7 %)  [1.63 %]
+PASS  08: RMSE vs paper S11: baseline 2.92 dB, lumped port 2.82 dB (+-0.02)
 PASS  03: Koch-only dips (>= 1 dB prominence): 2.17/-6.5, 3.07/-23.9, 5.93/-16.1, 6.95/-12.7, 7.98/-13.1, 9.21/-22.4, 9.99/-45.3, 10.62/-22.2
 PASS  03: Koch-only S11 never below -20 dB near 7.2 GHz (paper: < -20 dB)  [deepest in 7.0-7.4 GHz: -11.3 dB]
 PASS  03: Koch-only deepest S11 below 9.5 GHz is above -25 dB (paper: better than -25 dB at 5.8-6.2 GHz)  [-23.9 dB]
@@ -447,4 +529,4 @@ PASS  06: null test (16 conventions): matched best is highest of 7 only for a-H 
 PASS  06: null test: matched below the null median in 7 of 14, below the null maximum in 12 of 14 (16 conventions)
 PASS  06: null test (z-consistent conventions): matched never highest of 7
 
-54 passed, 0 failed, 54 checks
+64 passed, 0 failed, 64 checks

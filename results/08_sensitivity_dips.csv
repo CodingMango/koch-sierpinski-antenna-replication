@@ -1,0 +1,57 @@
+case,band,paper_f_GHz,dip_f_GHz,dip_dB,S11_at_paper_f_dB
+baseline (wave port),1,2.11,2.09,-5.8,-5.6
+baseline (wave port),2,3.06,3.04,-22.2,-12.0
+baseline (wave port),3,5.78,5.76,-13.3,-11.6
+baseline (wave port),4,6.94,6.92,-13.4,-13.1
+baseline (wave port),5,8.48,8.45,-16.0,-12.6
+baseline (wave port),6,9.23,9.18,-28.6,-16.7
+baseline (wave port),7,9.56,9.54,-37.6,-23.6
+Fw 1.5 mm,1,2.11,2.09,-7.6,-6.6
+Fw 1.5 mm,2,3.06,3.0,-21.4,-2.8
+Fw 1.5 mm,3,5.78,5.73,-10.5,-5.6
+Fw 1.5 mm,4,6.94,6.75,-13.7,-6.3
+Fw 1.5 mm,5,8.48,8.39,-16.5,-7.1
+Fw 1.5 mm,6,9.23,9.11,-31.6,-8.8
+Fw 1.5 mm,7,9.56,9.53,-25.2,-19.8
+Fw 1.73 mm,1,2.11,2.09,-6.1,-5.8
+Fw 1.73 mm,2,3.06,3.05,-24.3,-13.4
+Fw 1.73 mm,3,5.78,5.76,-12.6,-11.0
+Fw 1.73 mm,4,6.94,6.91,-14.0,-13.4
+Fw 1.73 mm,5,8.48,8.44,-15.8,-11.8
+Fw 1.73 mm,6,9.23,9.19,-31.9,-17.2
+Fw 1.73 mm,7,9.56,9.53,-28.1,-21.4
+Fw 1.8 mm,1,2.11,2.09,-5.8,-5.6
+Fw 1.8 mm,2,3.06,3.05,-22.6,-12.7
+Fw 1.8 mm,3,5.78,5.76,-13.0,-11.5
+Fw 1.8 mm,4,6.94,6.92,-13.8,-13.5
+Fw 1.8 mm,5,8.48,8.44,-15.8,-11.5
+Fw 1.8 mm,6,9.23,9.19,-32.3,-17.6
+Fw 1.8 mm,7,9.56,9.53,-33.7,-20.7
+radiation box 20 mm,1,2.11,2.09,-6.0,-5.7
+radiation box 20 mm,2,3.06,3.04,-22.5,-12.1
+radiation box 20 mm,3,5.78,5.76,-13.1,-10.7
+radiation box 20 mm,4,6.94,6.9,-13.1,-12.1
+radiation box 20 mm,5,8.48,8.44,-16.0,-11.5
+radiation box 20 mm,6,9.23,9.18,-31.3,-15.7
+radiation box 20 mm,7,9.56,9.54,-39.3,-23.8
+copper (finite conductivity),1,2.11,2.09,-6.6,-6.2
+copper (finite conductivity),2,3.06,3.04,-23.4,-10.4
+copper (finite conductivity),3,5.78,5.76,-12.2,-10.2
+copper (finite conductivity),4,6.94,6.93,-16.2,-16.0
+copper (finite conductivity),5,8.48,8.44,-15.0,-11.3
+copper (finite conductivity),6,9.23,9.18,-36.2,-16.2
+copper (finite conductivity),7,9.56,9.53,-29.4,-20.9
+wave port 7 x 4 mm,1,2.11,2.09,-5.8,-5.4
+wave port 7 x 4 mm,2,3.06,3.01,-24.8,-3.8
+wave port 7 x 4 mm,3,5.78,5.73,-13.2,-6.6
+wave port 7 x 4 mm,4,6.94,6.83,-12.8,-9.0
+wave port 7 x 4 mm,5,8.48,8.39,-16.1,-7.2
+wave port 7 x 4 mm,6,9.23,9.1,-26.9,-10.1
+wave port 7 x 4 mm,7,9.56,9.5,-37.1,-15.7
+lumped port (+X padded),1,2.11,2.1,-6.0,-5.8
+lumped port (+X padded),2,3.06,3.05,-24.0,-19.8
+lumped port (+X padded),3,5.78,5.76,-13.8,-11.7
+lumped port (+X padded),4,6.94,6.92,-13.7,-13.4
+lumped port (+X padded),5,8.48,8.45,-14.7,-11.8
+lumped port (+X padded),6,9.23,9.19,-33.1,-17.1
+lumped port (+X padded),7,9.56,9.54,-25.3,-21.5
